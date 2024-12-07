@@ -13,6 +13,32 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
     <style>
+
+.instafeed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .instafeed li {
+            width: calc(25% - 5px);
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .instafeed li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .instafeed li:hover img {
+            transform: scale(1.1);
+        }
         /* Toast Mesaj Stilleri */
         .toast-message {
             position: fixed;
@@ -302,9 +328,6 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="sportswear.html">Spor Giyim</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="accessories.html">Aksesuarlar</a>
-                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item submenu dropdown">
@@ -312,13 +335,13 @@
                                    aria-haspopup="true" aria-expanded="false">Birimlerimiz</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="departments/sales.html">Satış Birimi</a>
+                                        <a class="nav-link" href="sales.html">Satış Birimi</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="departments/support.html">Müşteri Hizmetleri</a>
+                                        <a class="nav-link" href="support.html">Müşteri Hizmetleri</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="departments/technical.html">Teknik Destek</a>
+                                        <a class="nav-link" href="technical.html">Teknik Destek</a>
                                     </li>
                                 </ul>
                             </li>
@@ -482,6 +505,12 @@
                                     <div class="yorum-tarih">18 Mart 2024</div>
                                     <p class="yorum-metin">Max Air yastıklama sistemi gerçekten fark yaratıyor. Günlük kullanım için ideal bir seçim.</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
                                 <footer class="footer-area section_gap">
                                     <div class="container">
                                         <div class="row">
