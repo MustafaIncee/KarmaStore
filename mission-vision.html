@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misyon & Vizyon - Karma Shop</title>
+    
+    <!-- CSS Dosyaları -->
+    <link rel="stylesheet" href="css/linearicons.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/nouislider.min.css">
+    <link rel="stylesheet" href="css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/main.css">
+    
+    <!-- Özel Stiller -->
+    <style>
+        .nav-item.active .nav-link {
+    color: #ffba00 !important; /* Sarı renk tonu */
+}
+        .instafeed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .instafeed li {
+            width: calc(25% - 5px);
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .instafeed li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .instafeed li:hover img {
+            transform: scale(1.1);
+        }
+
+        .mission-vision-area {
+            padding: 120px 0;
+            background: #f9f9f9;
+        }
+
+        .mission-vision-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .mission-vision-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .mission-vision-icon {
+            width: 80px;
+            height: 80px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .mission-vision-icon i {
+            font-size: 35px;
+            color: #007bff;
+        }
+
+        .mission-vision-content h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .mission-vision-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .mission-vision-content ul li {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover {
+            background: #007bff;
+            color: #fff;
+        }
+
+        .value-item i {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #007bff;
+        }
+
+        .value-item:hover i {
+            color: #fff;
+        }
+
+        .value-content h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .value-content p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .section-title {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 20px;
+            color: #333;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #007bff;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .mission-vision-box {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Start Header Area -->
+    <header class="header_area sticky-header">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand logo_h" href="../index.html"><img src="../img/logo.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item"><a class="nav-link" href="../index.html">Ana Sayfa</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../about.html">Hakkımızda</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="../mission-vision.html">MİSYON-VİZYON</a></li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                    aria-expanded="false">ÜRÜNLERİMİZ</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="../products/shoes.html">Ayakkabılar</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../products/sportswear.html">Spor Giyim</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                    aria-expanded="false">BİRİMLERİMİZ</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="sales.html">SATIŞ BİRİMİ</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="support.html">MÜŞTERİ HİZMETLERİ</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="technical.html">TEKNİK DESTEK</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="../contact.html">İLETİŞİM</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../login-register.html">Giriş/Kayıt</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item"><a href="../cart.html" class="cart"><span class="ti-bag"></span></a></li>
+                            <li class="nav-item">
+                                <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="search_input" id="search_input_box">
+            <div class="container">
+                <form class="d-flex justify-content-between">
+                    <input type="text" class="form-control" id="search_input" placeholder="Arama yapın...">
+                    <button type="submit" class="btn"></button>
+                    <span class="lnr lnr-cross" id="close_search" title="Aramayı Kapat"></span>
+                </form>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
+
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Misyon & Vizyon</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="index.html">Ana Sayfa<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="mission-vision.html">Misyon & Vizyon</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!-- Misyon & Vizyon Alanı -->
+    <section class="mission-vision-area">
+        <div class="container">
+            <div class="section-title">
+                <h2>Misyonumuz & Vizyonumuz</h2>
+                <p>Spor ayakkabı sektöründe öncü ve yenilikçi yaklaşımımızla fark yaratıyoruz</p>
+            </div>
+
+            <div class="row">
+                <!-- Misyon -->
+                <div class="col-lg-6">
+                    <div class="mission-vision-box">
+                        <div class="mission-vision-icon">
+                            <i class="fa fa-bullseye"></i>
+                        </div>
+                        <div class="mission-vision-content">
+                            <h3>Misyonumuz</h3>
+                            <p>Müşterilerimize en kaliteli spor ayakkabıları en uygun fiyatlarla sunarak, spor ve günlük yaşamlarında konfor ve stil sahibi olmalarını sağlamak. Sürdürülebilir üretim pratikleri ve çevre dostu yaklaşımlarla, gelecek nesillere daha yaşanabilir bir dünya bırakmak için çalışmak.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-check text-primary mr-2"></i> Kaliteli ürün ve hizmet sunmak</li>
+                                <li><i class="fa fa-check text-primary mr-2"></i> Müşteri memnuniyetini en üst düzeyde tutmak</li>
+                                <li><i class="fa fa-check text-primary mr-2"></i> Çevre dostu üretim süreçleri uygulamak</li>
+                                <li><i class="fa fa-check text-primary mr-2"></i> Sürdürülebilir büyüme sağlamak</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vizyon -->
+                <div class="col-lg-6">
+                    <div class="mission-vision-box">
+                        <div class="mission-vision-icon">
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <div class="mission-vision-content">
+                            <h3>Vizyonumuz</h3>
+                            <p>Türkiye'nin ve dünyanın önde gelen spor ayakkabı perakendecilerinden biri olarak, yenilikçi ürünler ve hizmetlerle müşterilerimizin hayatına değer katmak. Teknoloji ve modayı birleştirerek, spor ayakkabı sektöründe trend belirleyici olmak.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-check text-primary mr-2"></i> Sektörde lider konuma ulaşmak</li>
+                                <li><i class="fa fa-check text-primary mr-2"></i> Global pazarda söz sahibi olmak</li>
+                                <li><i class="fa fa-check text-primary mr-2"></i> Yenilikçi ürünler geliştirmek</li>
+                                <li><i class="fa fa-check text-primary mr-2"></i> Dijital dönüşüme öncülük etmek</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Değerlerimiz -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Temel Değerlerimiz</h2>
+                        <p>Başarımızın arkasındaki temel prensipler</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-item">
+                        <i class="fa fa-heart"></i>
+                        <div class="value-content">
+                            <h4>Müşteri Odaklılık</h4>
+                            <p>Müşterilerimizin ihtiyaç ve beklentilerini en iyi şekilde karşılamak</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-item">
+                        <i class="fa fa-shield"></i>
+                        <div class="value-content">
+                            <h4>Kalite</h4>
+                            <p>En yüksek kalite standartlarında ürün ve hizmet sunmak</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-item">
+                        <i class="fa fa-lightbulb-o"></i>
+                        <div class="value-content">
+                            <h4>Yenilikçilik</h4>
+                            <p>Sürekli gelişim ve yenilik için çalışmak</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-item">
+                        <i class="fa fa-users"></i>
+                        <div class="value-content">
+                            <h4>Takım Çalışması</h4>
+                            <p>Birlikte çalışarak daha büyük başarılara ulaşmak</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-item">
+                        <i class="fa fa-leaf"></i>
+                        <div class="value-content">
+                            <h4>Sürdürülebilirlik</h4>
+                            <p>Çevre dostu uygulamalarla geleceğe yatırım yapmak</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="value-item">
+                        <i class="fa fa-handshake-o"></i>
+                        <div class="value-content">
+                            <h4>Güvenilirlik</h4>
+                            <p>Dürüst ve şeffaf iş ilişkileri kurmak</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Alanı Başlangıç -->
+    <footer class="footer-area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Hakkımızda</h6>
+                        <p>
+                            2010 yılından bu yana spor ayakkabı sektöründe hizmet veren firmamız, 
+                            müşteri memnuniyetini esas alarak kaliteli ürün ve hizmet sunmaktadır.
+                        </p>
+                        <div class="footer-address mt-4">
+                            <p><i class="fa fa-map-marker"></i> Bağdat Caddesi No:123</p>
+                            <p>Kadıköy / İstanbul</p>
+                            <p><i class="fa fa-phone"></i> +90 (216) 123 45 67</p>
+                            <p><i class="fa fa-envelope"></i> info@karmastore.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Bültenimize Abone Olun</h6>
+                        <p>En güncel kampanya ve indirimlerden haberdar olun</p>
+                        <div id="mc_embed_signup">
+                            <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+                                <div class="d-flex flex-row">
+                                    <input class="form-control" name="EMAIL" placeholder="E-posta Adresiniz" required="" type="email">
+                                    <button class="click-btn btn btn-default">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget mail-chimp">
+                        <h6>Instagram'da Bizi Takip Edin</h6>
+                        <ul class="instafeed d-flex flex-wrap">
+                            <li><img src="img/product/p1.jpg" alt="Nike Air Max"></li>
+                            <li><img src="img/product/p2.jpg" alt="Adidas Ultraboost"></li>
+                            <li><img src="img/product/p3.jpg" alt="Puma RS-X"></li>
+                            <li><img src="img/product/p4.jpg" alt="New Balance 990"></li>
+                            <li><img src="img/product/p5.jpg" alt="Nike Jordan"></li>
+                            <li><img src="img/product/p6.jpg" alt="Adidas NMD"></li>
+                            <li><img src="img/product/p7.jpg" alt="Nike Dunk"></li>
+                            <li><img src="img/product/p8.jpg" alt="Puma Suede"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Sosyal Medya</h6>
+                        <p>Bizi takip edin</p>
+                        <div class="footer-social d-flex align-items-center">
+                            <a href="https://facebook.com/karmastore" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/karmastore" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://instagram.com/karmastore" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="https://youtube.com/karmastore" target="_blank"><i class="fa fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                <p class="footer-text m-0">
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+                    Tüm hakları saklıdır | Bu site 
+                    <a href="https://karmastore.com" target="_blank">Karma Store</a> 
+                    tarafından hazırlanmıştır
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Alanı Bitiş -->
+
+    <!-- JavaScript Dosyaları -->
+    <script src="js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Karma Store</title>
+    
+    <!-- CSS Dosyaları -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/linearicons.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/nouislider.min.css">
+    <link rel="stylesheet" href="css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .instafeed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .instafeed li {
+            width: calc(25% - 5px);
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .instafeed li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .instafeed li:hover img {
+            transform: scale(1.1);
+        }
+
+        .footer-social a {
+    color: #777777;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #ffba00;
+}
+
+.footer-social i {
+    font-size: 18px;
+}
+
+        .admin-container {
+            padding: 40px 0;
+            background: #f8f9fa;
+            min-height: calc(100vh - 400px);
+        }
+
+        .admin-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .table th {
+            background: #ffba00;
+            color: white;
+        }
+
+        .action-buttons .btn {
+            padding: 5px 10px;
+            margin: 0 3px;
+        }
+
+        .chart-container {
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .logout-btn {
+            color: #dc3545 !important;
+        }
+
+        .logout-btn:hover {
+            color: #c82333 !important;
+        }
+
+        .table td, .table th {
+            vertical-align: middle;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            display: none;
+        }
+
+        .form-container h4 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Start Header Area -->
+    <header class="header_area sticky-header">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                       <!--  <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mission-vision.html">Misyon-Vizyon</a></li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                    aria-expanded="false">Ürünlerimiz</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="shoes.html">Ayakkabılar</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="sportswear.html">Spor Giyim</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="accessories.html">Aksesuarlar</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                    aria-expanded="false">Birimlerimiz</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="sales.html">Satış Birimi</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="support.html">Müşteri Hizmetleri</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="technical.html">Teknik Destek</a></li>
+                                </ul>
+                            </li> -->   
+                            <li class="nav-item active"><a class="nav-link" href="admin-panel.html">Admin Panel</a></li>
+                            <li class="nav-item"><a class="nav-link logout-btn" href="index.html"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+        <!-- Start Banner Area -->
+        <section class="banner-area organic-breadcrumb">
+            <div class="container">
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                    <div class="col-first">
+                        <h1>Admin Panel</h1>
+                        <nav class="d-flex align-items-center">
+                            <a href="index.html">Ana Sayfa<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="admin-panel.html">Admin Panel</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Banner Area -->
+    
+        <div class="admin-container">
+            <div class="container">
+                <div class="admin-card">
+                    <h3 class="mb-4">Kullanıcı Yönetimi</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Ad Soyad</th>
+                                    <th>E-posta</th>
+                                    <th>Kayıt Tarihi</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userTableBody">
+                                <!-- Kullanıcı verileri JavaScript ile doldurulacak -->
+                            </tbody>
+                        </table>
+                    </div>
+    
+                    <!-- Güncelleme formu -->
+                    <div class="form-container" id="updateUserForm">
+                        <h4>Kullanıcı Bilgilerini Güncelle</h4>
+                        <form id="editUserForm">
+                            <input type="hidden" id="editUserId">
+                            <div class="form-group">
+                                <label for="editName">Ad Soyad:</label>
+                                <input type="text" class="form-control" id="editName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editEmail">E-posta:</label>
+                                <input type="email" class="form-control" id="editEmail" required>
+                            </div>
+                            <button type="submit" class="btn btn-success">Güncelle</button>
+                            <button type="button" class="btn btn-secondary" onclick="toggleUpdateForm()">Kapat</button>
+                        </form>
+                    </div>
+                </div>
+    
+                <div class="admin-card chart-container">
+                    <h3 class="mb-4">Satış İstatistikleri</h3>
+                    <canvas id="salesChart"></canvas>
+                </div>
+                <div class="admin-card chart-container">
+                    <h3 class="mb-4">Aylık Kazanç Analizi</h3>
+                    <canvas id="earningsChart"></canvas>
+</div>
+            </div>
+        </div>
+    
+        <!-- Footer Alanı Başlangıç -->
+        <footer class="footer-area section_gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6>Hakkımızda</h6>
+                            <p>
+                                2010 yılından bu yana spor ayakkabı sektöründe hizmet veren firmamız, 
+                                müşteri memnuniyetini esas alarak kaliteli ürün ve hizmet sunmaktadır.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6>Bültenimize Abone Olun</h6>
+                            <p>En güncel kampanya ve indirimlerden haberdar olun</p>
+                            <div id="mc_embed_signup">
+                                <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+                                    <div class="d-flex flex-row">
+                                        <input class="form-control" name="EMAIL" placeholder="E-posta Adresiniz" required="" type="email">
+                                        <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                                    </div>
+                                    <div class="info"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget mail-chimp">
+                            <h6>Instagram Feed</h6>
+                            <ul class="instafeed d-flex flex-wrap">
+                                <li><img src="../img/product/p1.jpg" alt="Nike Air Max"></li>
+                                <li><img src="../img/product/p2.jpg" alt="Adidas Ultraboost"></li>
+                                <li><img src="../img/product/p3.jpg" alt="Puma RS-X"></li>
+                                <li><img src="../img/product/p4.jpg" alt="New Balance 990"></li>
+                                <li><img src="../img/product/p5.jpg" alt="Nike Jordan"></li>
+                                <li><img src="../img/product/p6.jpg" alt="Adidas NMD"></li>
+                                <li><img src="../img/product/p7.jpg" alt="Nike Dunk"></li>
+                                <li><img src="../img/product/p8.jpg" alt="Puma Suede"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6>Bizi Takip Edin</h6>
+                            <p>Sosyal medya hesaplarımız</p>
+                            <div class="footer-social d-flex align-items-center">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Alanı Bitiş -->
+    
+        <!-- JavaScript -->
+        <script src="js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="js/jquery.nice-select.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/nouislider.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/main.js"></script>
+    
+        <script>
+            let users = [
+                { id: 1, name: 'Ahmet Yılmaz', email: 'ahmet@example.com', date: '2024-01-15' },
+                { id: 2, name: 'Ayşe Demir', email: 'ayse@example.com', date: '2024-02-20' },
+                { id: 3, name: 'Mehmet Kaya', email: 'mehmet@example.com', date: '2024-03-10' }
+            ];
+        
+            function populateUserTable() {
+                const tableBody = document.getElementById('userTableBody');
+                if (!tableBody) return;
+                
+                tableBody.innerHTML = '';
+        
+                users.forEach(user => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>${user.date}</td>
+                        <td class="action-buttons">
+                            <button class="btn btn-sm btn-primary" onclick="showUpdateForm(${user.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteUser(${user.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+        
+            function showUpdateForm(id) {
+                const user = users.find(u => u.id === id);
+                if (!user) return;
+        
+                document.getElementById('editUserId').value = user.id;
+                document.getElementById('editName').value = user.name;
+                document.getElementById('editEmail').value = user.email;
+                
+                document.getElementById('updateUserForm').style.display = 'block';
+            }
+        
+            function toggleUpdateForm() {
+                const form = document.getElementById('updateUserForm');
+                form.style.display = 'none';
+            }
+        
+            function deleteUser(id) {
+                if (confirm('Bu kullanıcıyı silmek istediğinizden emin misiniz?')) {
+                    const index = users.findIndex(u => u.id === id);
+                    if (index !== -1) {
+                        users.splice(index, 1);
+                        populateUserTable();
+                    }
+                }
+            }
+        
+            document.getElementById('editUserForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const id = parseInt(document.getElementById('editUserId').value);
+                const newName = document.getElementById('editName').value;
+                const newEmail = document.getElementById('editEmail').value;
+                
+                const userIndex = users.findIndex(u => u.id === id);
+                
+                if (userIndex !== -1) {
+                    users[userIndex].name = newName;
+                    users[userIndex].email = newEmail;
+                    
+                    populateUserTable();
+                    toggleUpdateForm();
+                }
+            });
+        
+            function createSalesChart() {
+                const ctx = document.getElementById('salesChart');
+                if (!ctx) return;
+        
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Nike Air Max', 'Adidas Ultraboost', 'Puma RS-X', 'New Balance 990', 'Nike Jordan'],
+                        datasets: [{
+                            label: 'Aylık Satış Adedi',
+                            data: [65, 59, 80, 81, 56],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Mart 2024 Ayakkabı Satış Verileri'
+                            }
+                        }
+                    }
+                });
+            }
+        
+            function createEarningsChart() {
+                const ctx = document.getElementById('earningsChart');
+                if (!ctx) return;
+        
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+                        datasets: [{
+                            label: 'Aylık Kazanç (TL)',
+                            data: [150000, 180000, 220000, 240000, 200000, 280000, 300000, 320000, 290000, 350000, 380000, 400000],
+                            fill: true,
+                            borderColor: 'rgb(75, 192, 192)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: '2024 Yılı Aylık Kazanç Grafiği'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value, index, values) {
+                                        return value.toLocaleString('tr-TR', {
+                                            style: 'currency',
+                                            currency: 'TRY'
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        
+            document.addEventListener('DOMContentLoaded', function() {
+                populateUserTable();
+                createSalesChart();
+                createEarningsChart();
+            });
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puma RS-X Detayları</title>
+    <link rel="stylesheet" href="../css/linearicons.css">
+    <link rel="stylesheet" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/themify-icons.css">
+    <link rel="stylesheet" href="../css/nice-select.css">
+    <link rel="stylesheet" href="../css/nouislider.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+
+        /* Toast Mesaj Stilleri */
+.toast-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.toast-message.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.toast-close:hover {
+    color: #ffba00;
+}
+        .instafeed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .instafeed li {
+            width: calc(25% - 5px);
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .instafeed li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .instafeed li:hover img {
+            transform: scale(1.1);
+        }
+
+        .urun-detay-container {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        .urun-detay {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .urun-resim {
+            flex: 1;
+            max-width: 500px;
+        }
+        .ana-resim img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .kucuk-resimler {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .kucuk-resimler img {
+            width: calc(33.333% - 7px);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .kucuk-resimler img:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+        .urun-bilgi {
+            flex: 1;
+            max-width: 500px;
+        }
+        .urun-bilgi h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .urun-bilgi p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .urun-bilgi .fiyat {
+            font-size: 24px;
+            color: #ffba00;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .numara-secici {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .numara-btn {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .numara-btn:hover {
+            border-color: #ffba00;
+        }
+
+        .numara-btn.active {
+            background: #ffba00;
+            color: white;
+            border-color: #ffba00;
+        }
+
+        .detay-btn, .favori-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-right: 10px;
+            background-color: #ffba00;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .detay-btn:hover, .favori-btn:hover {
+            background-color: #e5a800;
+            transform: translateY(-2px);
+        }
+
+        .favori-btn {
+            background-color: #ff4757;
+        }
+
+        .favori-btn:hover {
+            background-color: #ff6b81;
+        }
+
+        .panel-container {
+            margin-top: 40px;
+        }
+
+        .panel {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .panel-baslik {
+            background: #fff;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .panel-baslik:hover {
+            background: #f8f9fa;
+        }
+
+        .panel-baslik h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .panel-icerik {
+            background: #fff;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .panel-icerik.active {
+            padding: 20px;
+            max-height: 1000px;
+        }
+
+        .yorum-container {
+            margin-top: 20px;
+        }
+
+        .yorum-kutusu {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .yorum-kutusu:last-child {
+            border-bottom: none;
+        }
+
+        .yorum-baslik {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .yildizlar {
+            color: #ffba00;
+        }
+
+        .yorum-tarih {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .yorum-metin {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .puan-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .puan-yildiz {
+            font-size: 24px;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .puan-yildiz:hover,
+        .puan-yildiz.active {
+            color: #ffba00;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Başlangıç -->
+    <header class="header_area sticky-header">
+      <div class="main_menu">
+          <nav class="navbar navbar-expand-lg navbar-light main_box">
+              <div class="container">
+                  <!-- Logo -->
+                  <a class="navbar-brand logo_h" href="../index.html">
+                      <img src="../img/logo.png" alt="">
+                  </a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <!-- Menü -->
+                  <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                      <ul class="nav navbar-nav menu_nav ml-auto">
+                          <li class="nav-item">
+                              <a class="nav-link" href="../index.html">Ana Sayfa</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="../about.html">Hakkımızda</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="../mission-vision.html">Misyon-Vizyon</a>
+                          </li>
+                          <li class="nav-item submenu dropdown active">
+                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" 
+                                 aria-haspopup="true" aria-expanded="false">Ürünlerimiz</a>
+                              <ul class="dropdown-menu">
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="shoes.html">Ayakkabılar</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="sportswear.html">Spor Giyim</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="accessories.html">Aksesuarlar</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li class="nav-item submenu dropdown">
+                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" 
+                                 aria-haspopup="true" aria-expanded="false">Birimlerimiz</a>
+                              <ul class="dropdown-menu">
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="../departments/sales.html">Satış Birimi</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="../departments/support.html">Müşteri Hizmetleri</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="../departments/technical.html">Teknik Destek</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="../contact.html">İletişim</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="../login-register.html">Giriş/Kayıt</a>
+                          </li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                          <li class="nav-item">
+                              <a href="../cart.html" class="cart">
+                                  <span class="ti-bag"></span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <button class="search">
+                                  <span class="lnr lnr-magnifier" id="search"></span>
+                              </button>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+      </div>
+      <div class="search_input" id="search_input_box">
+          <div class="container">
+              <form class="d-flex justify-content-between">
+                  <input type="text" class="form-control" id="search_input" placeholder="Arama yapın...">
+                  <button type="submit" class="btn"></button>
+                  <span class="lnr lnr-cross" id="close_search" title="Aramayı Kapat"></span>
+              </form>
+          </div>
+      </div>
+  </header>
+  <!-- Header Bitiş -->
+      <!-- Banner Alanı -->
+      <section class="banner-area organic-breadcrumb">
+          <div class="container">
+              <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                  <div class="col-first">
+                      <h1>Puma RS-X</h1>
+                      <nav class="d-flex align-items-center">
+                          <a href="../index.html">Ana Sayfa<span class="lnr lnr-arrow-right"></span></a>
+                          <a href="../products.html">Ürünlerimiz<span class="lnr lnr-arrow-right"></span></a>
+                          <a href="shoes.html">Ayakkabılar<span class="lnr lnr-arrow-right"></span></a>
+                          <a href="#">Puma RS-X</a>
+                      </nav>
+                  </div>
+              </div>
+          </div>
+      </section>
+  
+      <!-- Ana İçerik Başlangıç -->
+      <main>
+          <section class="urun-detay-container">
+              <div class="container">
+                  <div class="urun-detay">
+                      <div class="urun-resim">
+                          <div class="ana-resim">
+                              <img id="buyukResim" src="../img/shoes/puma-rs-x-1.png" alt="Puma RS-X">
+                          </div>
+                          <div class="kucuk-resimler">
+                              <img src="../img/shoes/puma-rs-x-1.png" alt="Puma RS-X" onclick="resimDegistir(this)">
+                              <img src="../img/shoes/puma-rs-x-2.png" alt="Puma RS-X Yan Görünüm" onclick="resimDegistir(this)">
+                              <img src="../img/shoes/puma-rs-x-3.png" alt="Puma RS-X Arka Görünüm" onclick="resimDegistir(this)">
+                          </div>
+                      </div>
+                      <div class="urun-bilgi">
+                          <h2>Puma RS-X</h2>
+                          <p class="fiyat">4599.00 TL</p>
+                          
+                          <!-- Numara Seçici -->
+                          <div class="numara-secici">
+                              <button class="numara-btn">36</button>
+                              <button class="numara-btn">37</button>
+                              <button class="numara-btn">38</button>
+                              <button class="numara-btn">39</button>
+                              <button class="numara-btn">40</button>
+                              <button class="numara-btn">41</button>
+                              <button class="numara-btn">42</button>
+                              <button class="numara-btn">43</button>
+                              <button class="numara-btn">44</button>
+                          </div>
+  
+                          <p>Running System (RS) teknolojisini modern bir yorumla sunan Puma RS-X, 80'lerin retro koşu stilini günümüz sokak modasıyla harmanlıyor. Yenilikçi tasarımı ve üstün yastıklama teknolojisiyle hem spor hem günlük kullanım için ideal bir seçenek sunuyor.</p>
+                          
+                          <div class="buton-grup">
+                              <a href="../cart.html" class="detay-btn">
+                                  <i class="fa fa-shopping-cart"></i> Sepete Ekle
+                              </a>
+                              <a href="#" class="favori-btn">
+                                  <i class="fa fa-heart"></i> Favorilere Ekle
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+  
+                  <!-- Detaylar ve Yorumlar Bölümü -->
+                  <div class="panel-container">
+                      <!-- Detaylar Paneli -->
+                      <div class="panel">
+                          <div class="panel-baslik">
+                              <h3>Ürün Detayları</h3>
+                              <i class="fa fa-chevron-down"></i>
+                          </div>
+                          <div class="panel-icerik">
+                              <ul>
+                                  <li>Running System (RS) teknolojisi ile geliştirilmiş taban yapısı</li>
+                                  <li>Mesh ve sentetik deri kombinasyonlu üst yapı</li>
+                                  <li>PU köpük orta taban ile maksimum konfor</li>
+                                  <li>Dayanıklı kauçuk dış taban</li>
+                                  <li>Çok parçalı tasarım ve katmanlı görünüm</li>
+                                  <li>Retro-fütüristik tasarım anlayışı</li>
+                                  <li>Gösterilen Renk: PUMA White-High Risk Red</li>
+                                  <li>Stil: 374716_02</li>
+                                  <li>Menşe Ülke: Endonezya</li>
+                              </ul>
+                          </div>
+                      </div>
+  
+                      <!-- Yorumlar Paneli -->
+                      <div class="panel">
+                          <div class="panel-baslik">
+                              <h3>Müşteri Yorumları</h3>
+                              <i class="fa fa-chevron-down"></i>
+                          </div>
+                          <div class="panel-icerik">
+                              <!-- Puanlama Sistemi -->
+                              <div class="puan-container">
+                                  <span>Ürünü Puanlayın:</span>
+                                  <div class="yildizlar">
+                                      <i class="fa fa-star puan-yildiz" data-puan="1"></i>
+                                      <i class="fa fa-star puan-yildiz" data-puan="2"></i>
+                                      <i class="fa fa-star puan-yildiz" data-puan="3"></i>
+                                      <i class="fa fa-star puan-yildiz" data-puan="4"></i>
+                                      <i class="fa fa-star puan-yildiz" data-puan="5"></i>
+                                  </div>
+                              </div>
+  
+                              <!-- Örnek Yorumlar -->
+                              <div class="yorum-container">
+                                  <div class="yorum-kutusu">
+                                      <div class="yorum-baslik">
+                                          <strong>Mehmet A.</strong>
+                                          <div class="yildizlar">
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                          </div>
+                                      </div>
+                                      <div class="yorum-tarih">25 Mart 2024</div>
+                                      <p class="yorum-metin">RS teknolojisi gerçekten fark yaratıyor. Uzun süre ayakta kaldığım günlerde bile rahatsızlık hissetmiyorum.</p>
+                                  </div>
+  
+                                  <div class="yorum-kutusu">
+                                      <div class="yorum-baslik">
+                                          <strong>Ayşe B.</strong>
+                                          <div class="yildizlar">
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star-half-o"></i>
+                                          </div>
+                                      </div>
+                                      <div class="yorum-tarih">23 Mart 2024</div>
+                                      <p class="yorum-metin">Retro tasarımı ve renk kombinasyonu çok başarılı. Her kıyafetle uyum sağlıyor.</p>
+                                  </div>
+  
+                                  <div class="yorum-kutusu">
+                                      <div class="yorum-baslik">
+                                          <strong>Emre K.</strong>
+                                          <div class="yildizlar">
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star-o"></i>
+                                          </div>
+                                      </div>
+                                      <div class="yorum-tarih">21 Mart 2024</div>
+                                      <p class="yorum-metin">Yastıklama sistemi mükemmel ama biraz daha hafif olabilirdi. Yine de günlük kullanım için ideal.</p>
+                                  </div>
+  
+                                  <div class="yorum-kutusu">
+                                      <div class="yorum-baslik">
+                                          <strong>Zeynep Y.</strong>
+                                          <div class="yildizlar">
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                              <i class="fa fa-star"></i>
+                                          </div>
+                                      </div>
+                                      <div class="yorum-tarih">19 Mart 2024</div>
+                                      <p class="yorum-metin">Sokak stili için harika bir seçim. Kaliteli malzemeler kullanılmış, ayakkabı çok dayanıklı görünüyor.</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+      </main>
+      <footer class="footer-area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Hakkımızda</h6>
+                        <p>
+                            2010 yılından bu yana spor ayakkabı sektöründe hizmet veren firmamız, 
+                            müşteri memnuniyetini esas alarak kaliteli ürün ve hizmet sunmaktadır.
+                        </p>
+                        <div class="footer-address mt-4">
+                            <p><i class="fa fa-map-marker"></i> Bağdat Caddesi No:123</p>
+                            <p>Kadıköy / İstanbul</p>
+                            <p><i class="fa fa-phone"></i> +90 (216) 123 45 67</p>
+                            <p><i class="fa fa-envelope"></i> info@karmastore.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Bültenimize Abone Olun</h6>
+                        <p>En güncel kampanya ve indirimlerden haberdar olun</p>
+                        <div id="mc_embed_signup">
+                            <form target="_blank" novalidate="true" action="#" method="get" class="form-inline">
+                                <div class="d-flex flex-row">
+                                    <input class="form-control" name="EMAIL" placeholder="E-posta Adresiniz" required="" type="email">
+                                    <button class="click-btn btn btn-default">
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget mail-chimp">
+                        <h6>Instagram'da Bizi Takip Edin</h6>
+                        <ul class="instafeed d-flex flex-wrap">
+                            <li><img src="../img/product/p1.jpg" alt="Nike Air Max"></li>
+                            <li><img src="../img/product/p2.jpg" alt="Adidas Ultraboost"></li>
+                            <li><img src="../img/product/p3.jpg" alt="Puma RS-X"></li>
+                            <li><img src="../img/product/p4.jpg" alt="New Balance 990"></li>
+                            <li><img src="../img/product/p5.jpg" alt="Nike Jordan"></li>
+                            <li><img src="../img/product/p6.jpg" alt="Adidas NMD"></li>
+                            <li><img src="../img/product/p7.jpg" alt="Nike Dunk"></li>
+                            <li><img src="../img/product/p8.jpg" alt="Puma Suede"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Sosyal Medya</h6>
+                        <p>Bizi takip edin</p>
+                        <div class="footer-social d-flex align-items-center">
+                            <a href="https://facebook.com/karmastore" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/karmastore" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://instagram.com/karmastore" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="https://youtube.com/karmastore" target="_blank"><i class="fa fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                <p class="footer-text m-0">
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+                    Tüm hakları saklıdır | Bu site 
+                    <a href="https://karmastore.com" target="_blank">Karma Store</a> 
+                    tarafından hazırlanmıştır
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Dosyaları -->
+    <script src="../js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="../js/vendor/bootstrap.min.js"></script>
+    <script src="../js/jquery.ajaxchimp.min.js"></script>
+    <script src="../js/jquery.nice-select.min.js"></script>
+    <script src="../js/jquery.sticky.js"></script>
+    <script src="../js/nouislider.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
+
+    <script>
+
+        
+
+// Toast mesaj fonksiyonu
+function showToast(message) {
+    // Varolan toast mesajını kaldır
+    $('.toast-message').remove();
+    
+    // Yeni toast oluştur
+    const toast = $(`
+        <div class="toast-message">
+            ${message}
+            <button type="button" class="toast-close">&times;</button>
+        </div>
+    `);
+    
+    // Toast'u sayfaya ekle
+    $('body').append(toast);
+    
+    // Toast'u göster
+    setTimeout(() => {
+        toast.addClass('show');
+    }, 100);
+    
+    // 3 saniye sonra toast'u kaldır
+    setTimeout(() => {
+        toast.removeClass('show');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Sepete ekle butonu için event listener
+$('.detay-btn').click(function(e) {
+    e.preventDefault();
+    const selectedSize = $('.numara-btn.active').text();
+    if (!selectedSize) {
+        showToast('Lütfen bir numara seçiniz!');
+        return;
+    }
+    showToast('Puma RS-X sepete eklendi!');
+});
+
+// Favorilere ekle butonu için event listener
+$('.favori-btn').click(function(e) {
+    e.preventDefault();
+    showToast('Ürün favorilere eklendi!');
+});
+
+// Toast kapatma butonu için event listener
+$(document).on('click', '.toast-close', function() {
+    $(this).parent().removeClass('show');
+    setTimeout(() => {
+        $(this).parent().remove();
+    }, 300);
+});
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Panel açma/kapama
+            const panelBasliklar = document.querySelectorAll('.panel-baslik');
+            
+            panelBasliklar.forEach(baslik => {
+                baslik.addEventListener('click', function() {
+                    const panel = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Diğer panelleri kapat
+                    document.querySelectorAll('.panel-icerik').forEach(p => {
+                        if (p !== panel) {
+                            p.classList.remove('active');
+                            p.previousElementSibling.querySelector('i').className = 'fa fa-chevron-down';
+                        }
+                    });
+
+                    panel.classList.toggle('active');
+                    icon.classList.toggle('fa-chevron-up');
+                    icon.classList.toggle('fa-chevron-down');
+                });
+            });
+
+            // Numara seçici
+            const numaraButonlar = document.querySelectorAll('.numara-btn');
+            
+            numaraButonlar.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    numaraButonlar.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Puanlama sistemi
+            const puanYildizlar = document.querySelectorAll('.puan-yildiz');
+            
+            puanYildizlar.forEach((yildiz, index) => {
+                yildiz.addEventListener('mouseover', function() {
+                    puanYildizlar.forEach((y, i) => {
+                        if (i <= index) {
+                            y.classList.add('active');
+                        } else {
+                            y.classList.remove('active');
+                        }
+                    });
+                });
+
+                yildiz.addEventListener('click', function() {
+                    puanYildizlar.forEach((y, i) => {
+                        if (i <= index) {
+                            y.classList.add('active');
+                        } else {
+                            y.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            const puanContainer = document.querySelector('.puan-container');
+            puanContainer.addEventListener('mouseleave', function() {
+                puanYildizlar.forEach(y => {
+                    if (!y.classList.contains('selected')) {
+                        y.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Resim değiştirme fonksiyonu
+        function resimDegistir(element) {
+            document.getElementById('buyukResim').src = element.src;
+            
+            // Tüm küçük resimlerin opacity'sini normale çevir
+            document.querySelectorAll('.kucuk-resimler img').forEach(img => {
+                img.style.opacity = '1';
+            });
+            
+            // Seçili resmin opacity'sini düşür
+            element.style.opacity = '0.8';
+        }
+    </script>
+</body>
+</html>
