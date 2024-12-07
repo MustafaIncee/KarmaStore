@@ -13,19 +13,19 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
     <style>
-        .panel-container {
-    margin-top: 40px;
+        /* Panel İçerik Stilleri */
+.panel-icerik {
+    background: #fff;
+    padding: 20px;
+    display: none;
 }
 
-.panel {
-    margin-bottom: 15px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background: #fff;
+.panel-icerik.active {
+    display: block;
 }
 
 .panel-baslik {
+    background: #fff;
     padding: 20px;
     cursor: pointer;
     display: flex;
@@ -35,54 +35,14 @@
 }
 
 .panel-baslik:hover {
-    background: #f8f9fa;
+    background-color: #f8f9fa;
+}
+.panel-baslik i {
+    transition: transform 0.3s ease;
 }
 
-.panel-baslik h3 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.panel-icerik {
-    padding: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.panel-icerik.active {
-    padding: 20px;
-    max-height: 1000px;
-}
-
-.detay-liste h4 {
-    margin: 20px 0 10px;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.detay-liste h4:first-child {
-    margin-top: 0;
-}
-
-.detay-liste ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px;
-}
-
-.detay-liste ul:last-child {
-    margin-bottom: 0;
-}
-
-.detay-liste ul li {
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.detay-liste ul li:last-child {
-    border-bottom: none;
+.panel-baslik.active i {
+    transform: rotate(180deg);
 }
         .instafeed {
             display: flex;
@@ -328,9 +288,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="sportswear.html">Spor Giyim</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="accessories.html">Aksesuarlar</a>
-                                </li>
                             </ul>
                         </li>
                         <li class="nav-item submenu dropdown">
@@ -451,106 +408,53 @@
                 </div>
 
                 <!-- Panel Sistemi -->
-<div class="panel-container">
-    <!-- Ürün Detayları Paneli -->
-    <div class="panel">
-        <div class="panel-baslik">
-            <h3>Ürün Detayları</h3>
-            <i class="fa fa-chevron-down"></i>
-        </div>
-        <div class="panel-icerik">
-            <div class="detay-liste">
-                <h4>Teknik Özellikler</h4>
-                <ul>
-                    <li>UA Storm teknolojisi ile su geçirmez yapı</li>
-                    <li>Ripstop kumaş dayanıklılık sağlar</li>
-                    <li>4-way stretch teknolojisi maksimum hareket özgürlüğü sunar</li>
-                    <li>Loose Fit kesim</li>
-                    <li>Çok sayıda fonksiyonel cep</li>
-                    <li>Malzeme: %95 Naylon, %5 Elastan</li>
-                    <li>Menşei: Vietnam</li>
-                </ul>
-
-                <h4>Bakım Talimatları</h4>
-                <ul>
-                    <li>30 derecede yıkama</li>
-                    <li>Ağartıcı kullanılmaz</li>
-                    <li>Düşük ısıda ütüleme</li>
-                    <li>Kuru temizleme yapılmaz</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Yorumlar Paneli -->
-    <div class="panel">
-        <div class="panel-baslik">
-            <h3>Müşteri Yorumları</h3>
-            <i class="fa fa-chevron-down"></i>
-        </div>
-        <div class="panel-icerik">
-            <!-- Puanlama Sistemi -->
-            <div class="puan-container">
-                <span>Ürünü Puanlayın:</span>
-                <div class="yildizlar">
-                    <i class="fa fa-star puan-yildiz" data-puan="1"></i>
-                    <i class="fa fa-star puan-yildiz" data-puan="2"></i>
-                    <i class="fa fa-star puan-yildiz" data-puan="3"></i>
-                    <i class="fa fa-star puan-yildiz" data-puan="4"></i>
-                    <i class="fa fa-star puan-yildiz" data-puan="5"></i>
-                </div>
-            </div>
-
-            <!-- Yorumlar Listesi -->
-            <div class="yorum-container">
-                <div class="yorum-kutusu">
-                    <div class="yorum-baslik">
-                        <strong>Ahmet Y.</strong>
-                        <div class="yildizlar">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                <div class="panel-container">
+                    <div class="panel">
+                        <div class="panel-baslik">
+                            <h3>Ürün Detayları</h3>
+                            <i class="fa fa-chevron-down"></i>
+                        </div>
+                        <div class="panel-icerik">
+                            <ul>
+                                <li>UA Storm teknolojisi ile su geçirmez yapı</li>
+                                <li>Ripstop kumaş dayanıklılık sağlar</li>
+                                <li>4-way stretch teknolojisi maksimum hareket özgürlüğü sunar</li>
+                                <li>Loose Fit kesim</li>
+                                <li>Çok sayıda fonksiyonel cep</li>
+                                <li>Malzeme: %95 Naylon, %5 Elastan</li>
+                                <li>Menşei: Vietnam</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="yorum-tarih">15 Mart 2024</div>
-                    <p class="yorum-metin">Harika bir ürün, özellikle su geçirmez özelliği çok işe yarıyor.</p>
-                </div>
 
-                <div class="yorum-kutusu">
-                    <div class="yorum-baslik">
-                        <strong>Mehmet K.</strong>
-                        <div class="yildizlar">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
+                    <div class="panel">
+                        <div class="panel-baslik">
+                            <h3>Müşteri Yorumları</h3>
+                            <i class="fa fa-chevron-down"></i>
+                        </div>
+                        <div class="panel-icerik">
+                            <div class="yorum-container">
+                                <div class="yorum-kutusu">
+                                    <div class="yorum-baslik">
+                                        <strong>Ahmet Y.</strong>
+                                        <div class="yildizlar">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="yorum-tarih">15 Mart 2024</div>
+                                    <p class="yorum-metin">Harika bir ürün, özellikle su geçirmez özelliği çok işe yarıyor.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="yorum-tarih">12 Mart 2024</div>
-                    <p class="yorum-metin">Kaliteli malzeme ve rahat kesim. Spor yaparken çok konforlu.</p>
-                </div>
-
-                <div class="yorum-kutusu">
-                    <div class="yorum-baslik">
-                        <strong>Ali R.</strong>
-                        <div class="yildizlar">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                    </div>
-                    <div class="yorum-tarih">10 Mart 2024</div>
-                    <p class="yorum-metin">Cepleri çok kullanışlı ve malzemesi oldukça dayanıklı. Tavsiye ederim.</p>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        </section>
+    </main>
         <!-- Footer Alanı Başlangıç -->
         <footer class="footer-area section_gap">
             <div class="container">
@@ -672,15 +576,24 @@
 
         // Panel sistemi
         document.querySelectorAll('.panel-baslik').forEach(baslik => {
-            baslik.addEventListener('click', function() {
-                const panel = this.nextElementSibling;
-                const icon = this.querySelector('i');
-                
-                panel.classList.toggle('active');
-                icon.classList.toggle('fa-chevron-up');
-                icon.classList.toggle('fa-chevron-down');
-            });
-        });
+    baslik.addEventListener('click', function() {
+        const panel = this.nextElementSibling;
+        const icon = this.querySelector('i');
+        
+        // Aktif sınıfını toggle et
+        this.classList.toggle('active');
+        panel.classList.toggle('active');
+        
+        // İkonu döndür
+        if (panel.classList.contains('active')) {
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+        } else {
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+        }
+    });
+});
     </script>
 
     <!-- Gerekli JavaScript dosyaları -->
