@@ -6,129 +6,190 @@
     <title>Spor Giyim | Karma Store</title>
     
     <!-- CSS Dosyaları -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"></script>
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/themify-icons.css">
-    <link rel="stylesheet" href="../css/linearicons.css">
-    <link rel="stylesheet" href="../css/owl.carousel.css">
-    <link rel="stylesheet" href="../css/nice-select.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/linearicons.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.css">
     
     <style>
+        /* Ana Konteyner Stilleri */
+        .urun-container {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
 
-        /* Fiyat filtresi stilleri */
-.fiyat-filtre {
-    padding: 15px 0;
-}
+        /* Ürün Grid Stilleri */
+        .urun-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
 
-.fiyat-input {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
+        /* Ürün Kartı Stilleri */
+        .urun-kart {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
 
-.fiyat-input input {
-    width: 80px;
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
+        .urun-kart:hover {
+            transform: translateY(-5px);
+        }
 
-.fiyat-input span {
-    color: #666;
-}
+        .urun-resim-container {
+            position: relative;
+            padding-top: 100%;
+            overflow: hidden;
+        }
 
-.fiyat-slider {
-    padding: 0 10px;
-    margin-top: 20px;
-}
-
-/* noUiSlider özelleştirmeleri */
-.noUi-target {
-    height: 3px;
-    background: #ddd;
-    border: none;
-    box-shadow: none;
-}
-
-.noUi-connect {
-    background: #ffba00;
-}
-
-.noUi-horizontal .noUi-handle {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: #ffba00;
-    border: 2px solid #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    cursor: pointer;
-    right: -7px;
-}
-
-.noUi-handle:before,
-.noUi-handle:after {
-    display: none;
-}
-
-/* Filtre başlık stilleri */
-.filtre-baslik {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    color: #333;
-}
-
-/* Filtre kutusu stilleri */
-.filtreler {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-/* Hover efektleri */
-.noUi-handle:hover {
-    background: #e5a800;
-}
-
-.fiyat-input input:focus {
-    outline: none;
-    border-color: #ffba00;
-    box-shadow: 0 0 0 2px rgba(255,186,0,0.1);
-}
-
-/* Responsive düzenlemeler */
-@media (max-width: 768px) {
-    .fiyat-input {
-        flex-wrap: wrap;
-    }
-    
-    .fiyat-input input {
-        width: 70px;
-    }
-}
         .urun-resim-container a {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
 
-.urun-resim {
-    transition: transform 0.3s ease;
-}
+        .urun-resim {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
 
-.urun-resim:hover {
-    transform: scale(1.1);
-}
+        .urun-resim:hover {
+            transform: scale(1.1);
+        }
 
-        
-         .instafeed {
+        .urun-detay {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .urun-baslik {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .fiyat {
+            font-size: 20px;
+            color: #ffba00;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .detay-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #ffba00;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .detay-btn:hover {
+            background-color: #e5a800;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Filtre Stilleri */
+        .filtreler {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .filtre-baslik {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffba00;
+            color: #333;
+        }
+
+        .kategori-link {
+            display: block;
+            padding: 8px 0;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .kategori-link:hover,
+        .kategori-link.active {
+            color: #ffba00;
+            text-decoration: none;
+        }
+
+        /* Fiyat Filtresi Stilleri */
+        .fiyat-filtre {
+            padding: 15px 0;
+        }
+
+        .fiyat-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .fiyat-input input {
+            width: 80px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .fiyat-slider {
+            padding: 0 10px;
+            margin-top: 20px;
+        }
+
+        /* NoUiSlider Özelleştirmeleri */
+        .noUi-target {
+            height: 3px;
+            background: #ddd;
+            border: none;
+            box-shadow: none;
+        }
+
+        .noUi-connect {
+            background: #ffba00;
+        }
+
+        .noUi-horizontal .noUi-handle {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #ffba00;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            cursor: pointer;
+            right: -7px;
+        }
+
+        .noUi-handle:before,
+        .noUi-handle:after {
+            display: none;
+        }
+
+        /* Instagram Feed Stilleri */
+        .instafeed {
             display: flex;
             flex-wrap: wrap;
             gap: 5px;
@@ -153,148 +214,48 @@
         .instafeed li:hover img {
             transform: scale(1.1);
         }
-        .urun-container {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-        }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .urun-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .urun-kart {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            overflow: hidden;
-        }
-
-        .urun-kart:hover {
-            transform: translateY(-5px);
-        }
-
-        .urun-resim-container {
-            position: relative;
-            padding-top: 100%;
-            overflow: hidden;
-        }
-
-        .urun-resim {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .urun-detay {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .urun-baslik {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .fiyat {
-            font-size: 20px;
-            color: #ffba00;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .detay-btn {
-            display: inline-block;
-            padding: 8px 20px;
-            background-color: #ffba00;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .detay-btn:hover {
-            background-color: #e5a800;
-            color: white;
-        }
-
-        .filtreler {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        .filtre-baslik {
-            font-size: 20px;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #ffba00;
-        }
-
-        .kategori-link {
-            display: block;
-            padding: 8px 0;
-            color: #333;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .kategori-link:hover,
-        .kategori-link.active {
-            color: #ffba00;
-        }
-
+        /* Header Düzeltmeleri */
         .header_area {
-        margin-top: 30px; /* Header'ı aşağı indirmek için */
-    }
-
-    /* Banner alanı için düzeltme */
-    .banner-area {
-        margin-top: 30px; /* Banner ile header arasında boşluk */
-    }
-
-    /* Responsive düzenlemeler */
-    @media (max-width: 991px) {
-        .header_area {
-            margin-top: 15px; /* Mobil görünümde daha az boşluk */
+            margin-top: 30px;
         }
-        
+
         .banner-area {
-            margin-top: 15px;
+            margin-top: 30px;
         }
-    }
+
+        /* Responsive Düzenlemeler */
+        @media (max-width: 991px) {
+            .header_area {
+                margin-top: 15px;
+            }
+            
+            .banner-area {
+                margin-top: 15px;
+            }
+
+            .urun-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .fiyat-input {
+                flex-wrap: wrap;
+            }
+            
+            .fiyat-input input {
+                width: 70px;
+            }
+        }
     </style>
 </head>
-<body>
-   
-     <!-- Header Başlangıç -->
-     <header class="header_area sticky-header">
+    <!-- Header Başlangıç -->
+    <header class="header_area sticky-header">
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light main_box">
                 <div class="container">
-                    <!-- Logo -->
                     <a class="navbar-brand logo_h" href="index.html">
-                        <img src="../img/logo.png" alt="">
+                        <img src="img/logo.png" alt="Karma Store Logo">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -302,82 +263,65 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <!-- Menü -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.html">Ana Sayfa</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="about.html">Hakkımızda</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="mission-vision.html">Misyon-Vizyon</a>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
+                            <li class="nav-item"><a class="nav-link" href="mission-vision.html">Misyon-Vizyon</a></li>
                             <li class="nav-item submenu dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" 
                                    aria-haspopup="true" aria-expanded="false">Ürünlerimiz</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="shoes.html">Ayakkabılar</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="sportswear.html">Spor Giyim</a>
-                                    </li>
-
+                                    <li class="nav-item"><a class="nav-link" href="shoes.html">Ayakkabılar</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="sportswear.html">Spor Giyim</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" 
                                    aria-haspopup="true" aria-expanded="false">Birimlerimiz</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="sales.html">Satış Birimi</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="support.html">Müşteri Hizmetleri</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="technical.html">Teknik Destek</a>
-                                    </li>
+                                    <li class="nav-item"><a class="nav-link" href="sales.html">Satış Birimi</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="support.html">Müşteri Hizmetleri</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="technical.html">Teknik Destek</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">İletişim</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="login-register.html">Giriş/Kayıt</a>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login-register.html">Giriş/Kayıt</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="nav-item">
-                                <a href="cart.html" class="cart">
-                                    <span class="ti-bag"></span>
-                                </a>
+                                <a href="cart.html" class="cart"><span class="ti-bag"></span></a>
                             </li>
                             <li class="nav-item">
-                                <button class="search">
-                                    <span class="lnr lnr-magnifier" id="search"></span>
-                                </button>
+                                <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
-    
-    <!-- Header Bitiş -->
+        <!-- Arama Kutusu -->
+        <div class="search_input" id="search_input_box">
+            <div class="container">
+                <form class="d-flex justify-content-between">
+                    <input type="text" class="form-control" id="search_input" placeholder="Arama yapın...">
+                    <button type="submit" class="btn"></button>
+                    <span class="lnr lnr-cross" id="close_search" title="Aramayı Kapat"></span>
+                </form>
+            </div>
+        </div>
+    </header>
 
-      <!-- Banner Alanı -->
-      <section class="banner-area organic-breadcrumb">
+    <!-- Banner Alanı -->
+    <section class="banner-area organic-breadcrumb">
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1>Hakkımızda</h1>
+                    <h1>Spor Giyim</h1>
                     <nav class="d-flex align-items-center">
                         <a href="index.html">Ana Sayfa<span class="lnr lnr-arrow-right"></span></a>
                         <a href="products.html">Ürünlerimiz<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="shoes.html">Ayakkabılar</a>
+                        <a href="sportswear.html">Spor Giyim</a>
                     </nav>
                 </div>
             </div>
@@ -387,293 +331,312 @@
     <!-- Ana İçerik -->
     <section class="urun-container">
         <div class="container">
-            <div class="section-title">
-                <h2>Spor Giyim Koleksiyonu</h2>
-                <p>En son trend spor giyim ürünlerimizi inceleyin</p>
-            </div>
-
             <div class="row">
-              <!-- Filtreler bölümüne ekleyin -->
-<div class="col-xl-3 col-lg-4 col-md-5">
-    <div class="filtreler">
-        <h3 class="filtre-baslik">Kategoriler</h3>
-        <ul class="list-unstyled">
-            <li><a href="#" class="kategori-link" data-kategori="hepsi">Tüm Ürünler</a></li>
-            <li><a href="#" class="kategori-link" data-kategori="tisort">T-Shirt</a></li>
-            <li><a href="#" class="kategori-link" data-kategori="esofman">Eşofman</a></li>
-            <li><a href="#" class="kategori-link" data-kategori="sort">Şort</a></li>
-            <li><a href="#" class="kategori-link" data-kategori="tayt">Tayt</a></li>
-        </ul>
+                <!-- Filtreler -->
+                <div class="col-xl-3 col-lg-4 col-md-5">
+                    <div class="filtreler">
+                        <h3 class="filtre-baslik">Kategoriler</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="kategori-link" data-kategori="hepsi">Tüm Ürünler</a></li>
+                            <li><a href="#" class="kategori-link" data-kategori="tisort">T-Shirt</a></li>
+                            <li><a href="#" class="kategori-link" data-kategori="esofman">Eşofman</a></li>
+                            <li><a href="#" class="kategori-link" data-kategori="sort">Şort</a></li>
+                            <li><a href="#" class="kategori-link" data-kategori="tayt">Tayt</a></li>
+                        </ul>
 
-        <div class="fiyat-filtre mt-4">
-            <h3 class="filtre-baslik">Fiyat Aralığı</h3>
-            <div class="fiyat-input">
-                <span>₺</span>
-                <input type="number" id="minFiyat" placeholder="500" min="0">
-                <span>ile</span>
-                <span>₺</span>
-                <input type="number" id="maxFiyat" placeholder="5000" min="0">
-            </div>
-            <div class="fiyat-slider">
-                <div id="fiyat-range"></div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <div class="fiyat-filtre mt-4">
+                            <h3 class="filtre-baslik">Fiyat Aralığı</h3>
+                            <div class="fiyat-input">
+                                <span>₺</span>
+                                <input type="number" id="minFiyat" placeholder="500" min="0">
+                                <span>ile</span>
+                                <span>₺</span>
+                                <input type="number" id="maxFiyat" placeholder="5000" min="0">
+                            </div>
+                            <div class="fiyat-slider">
+                                <div id="fiyat-range"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<!-- Ürün Grid -->
-<div class="col-xl-9 col-lg-8 col-md-7">
-    <div class="urun-grid">
-        <!-- T-Shirt -->
-        <div class="urun-kart" data-kategori="tisort">
-            <div class="urun-resim-container">
-                <a href="nike-dri-fit-tshirt.html">
-                    <img src="../img/sportswear/nike-dri-fit.png" alt="Nike Dri-FIT T-Shirt" class="urun-resim">
-                </a>
-            </div>
-            <div class="urun-detay">
-                <h3 class="urun-baslik">Nike Dri-FIT T-Shirt</h3>
-                <p class="fiyat">1599.90 TL</p>
-                <a href="nike-dri-fit-tshirt.html" class="detay-btn">Detayları Gör</a>
-            </div>
-        </div>
+                <!-- Ürün Grid -->
+                <div class="col-xl-9 col-lg-8 col-md-7">
+                    <div class="urun-grid">
+                        <!-- T-Shirt 1 -->
+                        <div class="urun-kart" data-kategori="tisort">
+                            <div class="urun-resim-container">
+                                <a href="nike-dri-fit-tshirt.html">
+                                    <img src="img/sportswear/nike-dri-fit.png" alt="Nike Dri-FIT T-Shirt" class="urun-resim">
+                                </a>
+                            </div>
+                            <div class="urun-detay">
+                                <h3 class="urun-baslik">Nike Dri-FIT T-Shirt</h3>
+                                <p class="fiyat">1599.90 TL</p>
+                                <a href="nike-dri-fit-tshirt.html" class="detay-btn">Detayları Gör</a>
+                            </div>
+                        </div>
 
-        <!-- Eşofman -->
-        <div class="urun-kart" data-kategori="esofman">
-            <div class="urun-resim-container">
-                <a href="under-armour-utility-pantolon.html">
-                    <img src="../img/sportswear/utility-pantolon.png" alt="Under Armour Erkek UA Dokuma Utility Pantolon" class="urun-resim">
-                </a>
-            </div>
-            <div class="urun-detay">
-                <h3 class="urun-baslik">Under Armour Erkek Utility Pantolon</h3>
-                <p class="fiyat">3299.90 TL</p>
-                <a href="under-armour-utility-pantolon.html" class="detay-btn">Detayları Gör</a>
-            </div>
-        </div>
+                        <!-- T-Shirt 2 -->
+                        <div class="urun-kart" data-kategori="tisort">
+                            <div class="urun-resim-container">
+                                <a href="adidas-training-tshirt.html">
+                                    <img src="img/sportswear/adidas-training.png" alt="Adidas Training T-Shirt" class="urun-resim">
+                                </a>
+                            </div>
+                            <div class="urun-detay">
+                                <h3 class="urun-baslik">Adidas Training T-Shirt</h3>
+                                <p class="fiyat">1299.90 TL</p>
+                                <a href="adidas-training-tshirt.html" class="detay-btn">Detayları Gör</a>
+                            </div>
+                        </div>
 
-        <!-- Şort -->
-        <div class="urun-kart" data-kategori="sort">
-            <div class="urun-resim-container">
-                <a href="puma-essential-sort.html">
-                    <img src="../img/sportswear/essentials-sort-1.png" alt="Puma Essential Şort" class="urun-resim">
-                </a>
-            </div>
-            <div class="urun-detay">
-                <h3 class="urun-baslik">Puma Essential Şort</h3>
-                <p class="fiyat">899.90 TL</p>
-                <a href="puma-essential-sort.html" class="detay-btn">Detayları Gör</a>
-            </div>
-        </div>
-    </div>
-</div>
+                        <!-- Eşofman 1 -->
+                        <div class="urun-kart" data-kategori="esofman">
+                            <div class="urun-resim-container">
+                                <a href="under-armour-utility-pantolon.html">
+                                    <img src="img/sportswear/utility-pantolon.png" alt="Under Armour Utility Pantolon" class="urun-resim">
+                                </a>
+                            </div>
+                            <div class="urun-detay">
+                                <h3 class="urun-baslik">Under Armour Utility Pantolon</h3>
+                                <p class="fiyat">3299.90 TL</p>
+                                <a href="under-armour-utility-pantolon.html" class="detay-btn">Detayları Gör</a>
+                            </div>
+                        </div>
+
+                        <!-- Eşofman 2 -->
+                        <div class="urun-kart" data-kategori="esofman">
+                            <div class="urun-resim-container">
+                                <a href="puma-essential-esofman.html">
+                                    <img src="img/sportswear/puma-essential.png" alt="Puma Essential Eşofman" class="urun-resim">
+                                </a>
+                            </div>
+                            <div class="urun-detay">
+                                <h3 class="urun-baslik">Puma Essential Eşofman</h3>
+                                <p class="fiyat">2799.90 TL</p>
+                                <a href="puma-essential-esofman.html" class="detay-btn">Detayları Gör</a>
+                            </div>
+                        </div>
+
+                        <!-- Şort -->
+                        <div class="urun-kart" data-kategori="sort">
+                            <div class="urun-resim-container">
+                                <a href="nike-flex-stride-sort.html">
+                                    <img src="img/sportswear/nike-flex-stride.png" alt="Nike Flex Stride Şort" class="urun-resim">
+                                </a>
+                            </div>
+                            <div class="urun-detay">
+                                <h3 class="urun-baslik">Nike Flex Stride Şort</h3>
+                                <p class="fiyat">899.90 TL</p>
+                                <a href="nike-flex-stride-sort.html" class="detay-btn">Detayları Gör</a>
+                            </div>
+                        </div>
+
+                        <!-- Tayt -->
+                        <div class="urun-kart" data-kategori="tayt">
+                            <div class="urun-resim-container">
+                                <a href="adidas-believe-this-tayt.html">
+                                    <img src="img/sportswear/adidas-believe-this.png" alt="Adidas Believe This Tayt" class="urun-resim">
+                                </a>
+                            </div>
+                            <div class="urun-detay">
+                                <h3 class="urun-baslik">Adidas Believe This Tayt</h3>
+                                <p class="fiyat">1499.90 TL</p>
+                                <a href="adidas-believe-this-tayt.html" class="detay-btn">Detayları Gör</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
-  <!-- Footer Başlangıç -->
-  <footer class="footer-area section_gap">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="single-footer-widget">
-                    <h6>Hakkımızda</h6>
-                    <p>
-                        2010 yılından bu yana spor ayakkabı sektöründe hizmet veren firmamız, 
-                        müşteri memnuniyetini esas alarak kaliteli ürün ve hizmet sunmaktadır.
-                    </p>
-                    <div class="footer-address mt-4">
-                        <p><i class="fa fa-map-marker"></i> Bağdat Caddesi No:123</p>
-                        <p>Kadıköy / İstanbul</p>
-                        <p><i class="fa fa-phone"></i> +90 (216) 123 45 67</p>
-                        <p><i class="fa fa-envelope"></i> info@karmastore.com</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="single-footer-widget">
-                    <h6>Bültenimize Abone Olun</h6>
-                    <p>En güncel kampanya ve indirimlerden haberdar olun</p>
-                    <div id="mc_embed_signup">
-                        <form target="_blank" novalidate="true" action="#" method="get" class="form-inline">
-                            <div class="d-flex flex-row">
-                                <input class="form-control" name="EMAIL" placeholder="E-posta Adresiniz" required="" type="email">
-                                <button class="click-btn btn btn-default">
-                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                </button>
+        <!-- Footer -->
+        <footer class="footer-area section_gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6>Hakkımızda</h6>
+                            <p>2010 yılından bu yana spor giyim sektöründe hizmet veren firmamız, 
+                               müşteri memnuniyetini esas alarak kaliteli ürün ve hizmet sunmaktadır.</p>
+                            <div class="footer-address mt-4">
+                                <p><i class="fa fa-map-marker"></i> Bağdat Caddesi No:123</p>
+                                <p>Kadıköy / İstanbul</p>
+                                <p><i class="fa fa-phone"></i> +90 (216) 123 45 67</p>
+                                <p><i class="fa fa-envelope"></i> info@karmastore.com</p>
                             </div>
-                            <div class="info"></div>
-                        </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6>Bültenimize Abone Olun</h6>
+                            <p>En güncel kampanya ve indirimlerden haberdar olun</p>
+                            <div id="mc_embed_signup">
+                                <form target="_blank" novalidate="true" action="#" method="get" class="form-inline">
+                                    <div class="d-flex flex-row">
+                                        <input class="form-control" name="EMAIL" placeholder="E-posta Adresiniz" required="" type="email">
+                                        <button class="click-btn btn btn-default">
+                                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                    <div class="info"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget mail-chimp">
+                            <h6>Instagram'da Bizi Takip Edin</h6>
+                            <ul class="instafeed d-flex flex-wrap">
+                                <li><img src="img/instagram/i1.jpg" alt=""></li>
+                                <li><img src="img/instagram/i2.jpg" alt=""></li>
+                                <li><img src="img/instagram/i3.jpg" alt=""></li>
+                                <li><img src="img/instagram/i4.jpg" alt=""></li>
+                                <li><img src="img/instagram/i5.jpg" alt=""></li>
+                                <li><img src="img/instagram/i6.jpg" alt=""></li>
+                                <li><img src="img/instagram/i7.jpg" alt=""></li>
+                                <li><img src="img/instagram/i8.jpg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6>Sosyal Medya</h6>
+                            <p>Bizi takip edin</p>
+                            <div class="footer-social d-flex align-items-center">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-youtube"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="single-footer-widget mail-chimp">
-                    <h6>Instagram'da Bizi Takip Edin</h6>
-                    <ul class="instafeed d-flex flex-wrap">
-                        <li><img src="../img/product/p1.jpg" alt="Nike Air Max"></li>
-                        <li><img src="../img/product/p2.jpg" alt="Adidas Ultraboost"></li>
-                        <li><img src="../img/product/p3.jpg" alt="Puma RS-X"></li>
-                        <li><img src="../img/product/p4.jpg" alt="New Balance 990"></li>
-                        <li><img src="../img/product/p5.jpg" alt="Nike Jordan"></li>
-                        <li><img src="../img/product/p6.jpg" alt="Adidas NMD"></li>
-                        <li><img src="../img/product/p7.jpg" alt="Nike Dunk"></li>
-                        <li><img src="../img/product/p8.jpg" alt="Puma Suede"></li>
-                    </ul>
+                <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                    <p class="footer-text m-0">
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+                        Tüm hakları saklıdır | Bu site 
+                        <a href="https://karmastore.com" target="_blank">Karma Store</a> 
+                        tarafından hazırlanmıştır
+                    </p>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-6 col-sm-6">
-                <div class="single-footer-widget">
-                    <h6>Sosyal Medya</h6>
-                    <p>Bizi takip edin</p>
-                    <div class="footer-social d-flex align-items-center">
-                        <a href="https://facebook.com/karmastore" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="https://twitter.com/karmastore" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="https://instagram.com/karmastore" target="_blank"><i class="fa fa-instagram"></i></a>
-                        <a href="https://youtube.com/karmastore" target="_blank"><i class="fa fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-            <p class="footer-text m-0">
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
-                Tüm hakları saklıdır | Bu site 
-                <a href="https://karmastore.com" target="_blank">Karma Store</a> 
-                tarafından hazırlanmıştır
-            </p>
-        </div>
-    </div>
-</footer>
-<!-- Footer Bitiş -->
-
-    <!-- JavaScript Dosyaları -->
-    <script src="../js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="../js/vendor/bootstrap.min.js"></script>
-    <script src="../js/jquery.nice-select.min.js"></script>
-    <script src="../js/jquery.sticky.js"></script>
-    <script src="../js/main.js"></script>
+        </footer>
     
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // noUiSlider kurulumu
-    var fiyatSlider = document.getElementById('fiyat-range');
+        <!-- JavaScript Dosyaları -->
+        <script src="js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/jquery.nice-select.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/nouislider.min.js"></script>
+        <script src="js/main.js"></script>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Değişkenler
+                const minFiyat = document.getElementById('minFiyat');
+                const maxFiyat = document.getElementById('maxFiyat');
+                const urunKartlari = document.querySelectorAll('.urun-kart');
+                const kategoriLinkler = document.querySelectorAll('.kategori-link');
+                const searchButton = document.querySelector('.search');
+                const searchInput = document.querySelector('#search_input');
+                const searchBox = document.querySelector('#search_input_box');
+                const closeSearch = document.querySelector('#close_search');
     
-    noUiSlider.create(fiyatSlider, {
-        start: [500, 5000],
-        connect: true,
-        range: {
-            'min': 0,
-            'max': 5000
-        },
-        format: {
-            to: function(value) {
-                return Math.round(value);
-            },
-            from: function(value) {
-                return value;
-            }
-        }
-    });
-
-    var minFiyat = document.getElementById('minFiyat');
-    var maxFiyat = document.getElementById('maxFiyat');
-    const urunKartlari = document.querySelectorAll('.urun-kart');
-    const kategoriLinkler = document.querySelectorAll('.kategori-link');
-
-    // Fiyat filtreleme fonksiyonu
-    function fiyatFiltrele() {
-        const min = parseInt(minFiyat.value);
-        const max = parseInt(maxFiyat.value);
-        const aktifKategori = document.querySelector('.kategori-link.active').getAttribute('data-kategori');
-
-        urunKartlari.forEach(kart => {
-            const fiyatText = kart.querySelector('.fiyat').textContent;
-            const fiyat = parseFloat(fiyatText.replace('TL', '').replace(',', '.').trim());
-            const kartKategoriler = kart.getAttribute('data-kategori').split(' ');
-
-            if (fiyat >= min && fiyat <= max && 
-                (aktifKategori === 'hepsi' || kartKategoriler.includes(aktifKategori))) {
-                kart.style.display = 'block';
-            } else {
-                kart.style.display = 'none';
-            }
-        });
-    }
-
-    // Fiyat değişikliklerini dinle
-    fiyatSlider.noUiSlider.on('update', function(values, handle) {
-        if (handle === 0) {
-            minFiyat.value = values[0];
-        } else {
-            maxFiyat.value = values[1];
-        }
-    });
-
-    fiyatSlider.noUiSlider.on('change', fiyatFiltrele);
-    minFiyat.addEventListener('change', function() {
-        fiyatSlider.noUiSlider.set([this.value, null]);
-        fiyatFiltrele();
-    });
-
-    maxFiyat.addEventListener('change', function() {
-        fiyatSlider.noUiSlider.set([null, this.value]);
-        fiyatFiltrele();
-    });
-
-    // Kategori filtreleme
-    kategoriLinkler.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            kategoriLinkler.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-            
-            fiyatFiltrele(); // Kategori değiştiğinde fiyat filtresini de uygula
-        });
-    });
-
-    // Başlangıçta "Tüm Ürünler" kategorisini seç
-    document.querySelector('[data-kategori="hepsi"]').classList.add('active');
-});
-
-    // Kategori filtreleme
-    const kategoriLinkler = document.querySelectorAll('.kategori-link');
-    kategoriLinkler.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            kategoriLinkler.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-            
-            const secilenKategori = this.getAttribute('data-kategori');
-            fiyatFiltrele(); // Kategori değiştiğinde fiyat filtresini de uygula
-        });
-    });
-
-   
-        document.addEventListener('DOMContentLoaded', function() {
-            const kategoriLinkler = document.querySelectorAll('.kategori-link');
-            const urunKartlari = document.querySelectorAll('.urun-kart');
-
-            kategoriLinkler.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const secilenKategori = this.getAttribute('data-kategori');
-                    
-                    kategoriLinkler.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-
+                // Fiyat slider'ı başlatma
+                const fiyatSlider = document.getElementById('fiyat-range');
+                noUiSlider.create(fiyatSlider, {
+                    start: [500, 5000],
+                    connect: true,
+                    range: {
+                        'min': 0,
+                        'max': 5000
+                    },
+                    format: {
+                        to: function(value) {
+                            return Math.round(value);
+                        },
+                        from: function(value) {
+                            return value;
+                        }
+                    }
+                });
+    
+                // Ürün filtreleme fonksiyonu
+                function filterProducts() {
+                    const min = parseInt(minFiyat.value);
+                    const max = parseInt(maxFiyat.value);
+                    const aktifKategori = document.querySelector('.kategori-link.active').getAttribute('data-kategori');
+    
                     urunKartlari.forEach(kart => {
-                        if (secilenKategori === 'hepsi' || kart.getAttribute('data-kategori') === secilenKategori) {
+                        const fiyatText = kart.querySelector('.fiyat').textContent;
+                        const fiyat = parseFloat(fiyatText.replace('TL', '').replace(',', '.').trim());
+                        const kartKategoriler = kart.getAttribute('data-kategori').split(' ');
+    
+                        if ((aktifKategori === 'hepsi' || kartKategoriler.includes(aktifKategori)) && 
+                            fiyat >= min && fiyat <= max) {
+                            kart.style.display = 'block';
+                        } else {
+                            kart.style.display = 'none';
+                        }
+                    });
+                }
+    
+                // Event Listeners
+                fiyatSlider.noUiSlider.on('update', function(values, handle) {
+                    if (handle === 0) {
+                        minFiyat.value = values[0];
+                    } else {
+                        maxFiyat.value = values[1];
+                    }
+                    filterProducts();
+                });
+    
+                minFiyat.addEventListener('change', function() {
+                    fiyatSlider.noUiSlider.set([this.value, null]);
+                });
+    
+                maxFiyat.addEventListener('change', function() {
+                    fiyatSlider.noUiSlider.set([null, this.value]);
+                });
+    
+                kategoriLinkler.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        kategoriLinkler.forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                        filterProducts();
+                    });
+                });
+    
+                // Arama fonksiyonalitesi
+                searchButton.addEventListener('click', function() {
+                    searchBox.classList.add('active');
+                    searchInput.focus();
+                });
+    
+                closeSearch.addEventListener('click', function() {
+                    searchBox.classList.remove('active');
+                    searchInput.value = '';
+                });
+    
+                // Arama işlevi
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    urunKartlari.forEach(kart => {
+                        const urunAdi = kart.querySelector('.urun-baslik').textContent.toLowerCase();
+                        if (urunAdi.includes(searchTerm)) {
                             kart.style.display = 'block';
                         } else {
                             kart.style.display = 'none';
                         }
                     });
                 });
+    
+                // Başlangıçta "Tüm Ürünler" kategorisini seç
+                document.querySelector('[data-kategori="hepsi"]').classList.add('active');
             });
-        });
-    </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>
