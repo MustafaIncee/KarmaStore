@@ -19,6 +19,44 @@
 
     <style>
 
+.is-invalid {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25) !important;
+}
+
+.notification {
+    background-color: #dc3545; 
+}
+
+.notification.success {
+    background-color: #4CAF50; 
+}
+
+.notification {
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 4px;
+        display: none;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        animation: slideIn 0.5s ease-in-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
 .instafeed {
     display: flex;
     flex-wrap: wrap;
@@ -119,6 +157,8 @@
 </head>
 
 <body>
+
+    <div class="notification" id="notification"></div>
 
    <!-- Start Header Area -->
  <header class="header_area sticky-header">
@@ -243,63 +283,65 @@
                     </ul>
 
                     <div class="tab-content" id="contactTabsContent">
-                        <!-- İletişim Formu -->
-                        <div class="tab-pane fade show active" id="contact" role="tabpanel">
-                            <form class="row contact_form" action="contact_process.php" method="post" id="contactForm">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="name" placeholder="Adınız" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" name="email" placeholder="E-posta Adresiniz" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="subject" placeholder="Konu" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <textarea class="form-control" name="message" rows="1" placeholder="Mesajınız" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 text-right">
-                                    <button type="submit" value="submit" class="primary-btn">Mesaj Gönder</button>
-                                </div>
-                            </form>
-                        </div>
 
-                        <!-- Şikayet/Öneri Formu -->
-                        <div class="tab-pane fade" id="complaint" role="tabpanel">
-                            <form class="complaint-form" action="complaint_process.php" method="post" id="complaintForm">
-                                <div class="form-group">
-                                    <label for="complaintType">İşlem Türü</label>
-                                    <select class="form-control" name="complaintType" id="complaintType" required>
-                                        <option value="">Seçiniz</option>
-                                        <option value="complaint">Şikayet</option>
-                                        <option value="suggestion">Öneri</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="complaintName">Adınız Soyadınız</label>
-                                    <input type="text" class="form-control" name="complaintName" id="complaintName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="complaintEmail">E-posta Adresiniz</label>
-                                    <input type="email" class="form-control" name="complaintEmail" id="complaintEmail" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="complaintTitle">Başlık</label>
-                                    <input type="text" class="form-control" name="complaintTitle" id="complaintTitle" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="complaintMessage">Mesajınız</label>
-                                    <textarea class="form-control" name="complaintMessage" id="complaintMessage" rows="5" required></textarea>
-                                </div>
-                                <div class="text-right">
-                                    <button type="submit" class="primary-btn">Gönder</button>
-                                </div>
-                            </form>
-                        </div>
+                       <!-- İletişim Formu -->
+<div class="tab-pane fade show active" id="contact" role="tabpanel">
+    <form class="row contact_form" id="contactForm">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Adınız" required>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="E-posta Adresiniz" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="subject" placeholder="Konu" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <textarea class="form-control" name="message" rows="1" placeholder="Mesajınız" required></textarea>
+            </div>
+        </div>
+        <div class="col-md-12 text-right">
+            <button type="submit" class="primary-btn">Mesaj Gönder</button>
+        </div>
+    </form>
+</div>
+
+<!-- Şikayet/Öneri Formu -->
+<div class="tab-pane fade" id="complaint" role="tabpanel">
+    <form class="complaint-form" id="complaintForm" onsubmit="return false;">
+        <div class="form-group">
+            <label for="complaintType">İşlem Türü</label>
+            <select class="form-control" name="complaintType" id="complaintType" required>
+                <option value="">Seçiniz</option>
+                <option value="complaint">Şikayet</option>
+                <option value="suggestion">Öneri</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="complaintName">Adınız Soyadınız</label>
+            <input type="text" class="form-control" name="complaintName" id="complaintName" required>
+        </div>
+        <div class="form-group">
+            <label for="complaintEmail">E-posta Adresiniz</label>
+            <input type="email" class="form-control" name="complaintEmail" id="complaintEmail" required>
+        </div>
+        <div class="form-group">
+            <label for="complaintTitle">Başlık</label>
+            <input type="text" class="form-control" name="complaintTitle" id="complaintTitle" required>
+        </div>
+        <div class="form-group">
+            <label for="complaintMessage">Mesajınız</label>
+            <textarea class="form-control" name="complaintMessage" id="complaintMessage" rows="5" required></textarea>
+        </div>
+        <div class="text-right">
+            <button type="button" class="primary-btn" onclick="submitComplaintForm()">Gönder</button>
+        </div>
+    </form>
+</div>
+
                     </div>
                 </div>
             </div>
@@ -381,7 +423,7 @@
 	</footer>
 
     <!-- JavaScript -->
-    <script src="js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/jquery.ajaxchimp.min.js"></script>
@@ -391,31 +433,80 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-
     <script>
-        $(document).ready(function() {
-            // Form submit işlemleri
-            $('#complaintForm').on('submit', function(e) {
-                e.preventDefault();
-                
-                // Form verilerini al
-                var formData = $(this).serialize();
-                
-                // AJAX ile form gönderimi
-                $.ajax({
-                    type: 'POST',
-                    url: 'complaint_process.php',
-                    data: formData,
-                    success: function(response) {
-                        alert('Şikayet/Öneriniz başarıyla gönderildi. En kısa sürede size dönüş yapılacaktır.');
-                        $('#complaintForm')[0].reset();
-                    },
-                    error: function() {
-                        alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.');
-                    }
-                });
-            });
+     $(document).ready(function() {
+    function showNotification(message) {
+        $('#notification').text(message).fadeIn();
+        setTimeout(function() {
+            $('#notification').fadeOut();
+        }, 3000);
+    }
+
+    // İletişim formu submit
+    $('#contactForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        var form = $(this);
+        var isValid = true;
+        
+        form.find('[required]').each(function() {
+            if (!$(this).val()) {
+                isValid = false;
+                $(this).addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid');
+            }
         });
-    </script>
+
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var email = form.find('input[type="email"]');
+        if (!emailRegex.test(email.val())) {
+            isValid = false;
+            email.addClass('is-invalid');
+            showNotification('Lütfen geçerli bir e-posta adresi giriniz.');
+            return;
+        }
+
+        if (isValid) {
+            showNotification('Mesajınız başarıyla gönderildi!');
+            form[0].reset();
+        } else {
+            showNotification('Lütfen tüm alanları doldurunuz!');
+        }
+    });
+
+    // Şikayet formu submit
+    window.submitComplaintForm = function() {
+        var form = $('#complaintForm');
+        var isValid = true;
+        
+        form.find('[required]').each(function() {
+            if (!$(this).val()) {
+                isValid = false;
+                $(this).addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid');
+            }
+        });
+
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var email = form.find('#complaintEmail');
+        if (!emailRegex.test(email.val())) {
+            isValid = false;
+            email.addClass('is-invalid');
+            showNotification('Lütfen geçerli bir e-posta adresi giriniz.');
+            return;
+        }
+
+        if (isValid) {
+            showNotification('Şikayet/Öneri formunuz başarıyla gönderildi!');
+            form[0].reset();
+            form.find('.is-invalid').removeClass('is-invalid');
+        } else {
+            showNotification('Lütfen tüm alanları doldurunuz!');
+        }
+    };
+});
+        </script>
 </body>
 </html>

@@ -30,8 +30,8 @@
         }
 
         .instafeed li {
-            width: calc(25% - 5px);  /* 4 sütun grid için */
-            height: 60px;  /* Yüksekliği azalttık */
+            width: calc(25% - 5px);
+            height: 60px;
             overflow: hidden;
         }
 
@@ -54,6 +54,25 @@
             margin-bottom: 30px;
             transition: all 0.3s ease;
             text-align: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::after {
+            content: "Detaylar için tıklayın";
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 186, 0, 0.9);
+            color: white;
+            padding: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover::after {
+            bottom: 0;
         }
 
         .service-card:hover {
@@ -66,30 +85,50 @@
             margin-bottom: 20px;
         }
 
-        .faq-section .card {
-            margin-bottom: 15px;
-            border: 1px solid #eee;
-            border-radius: 8px;
+        .modal-content {
+            border: none;
+            border-radius: 15px;
         }
 
-        .faq-section .card-header {
+        .modal-header {
+            background: #ffba00;
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .chat-preview {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .service-feature {
+            padding: 15px;
+            border-left: 3px solid #ffba00;
+            margin: 10px 0;
             background: #f8f9fa;
-            padding: 0;
         }
 
-        .faq-section .btn-link {
-            width: 100%;
-            text-align: left;
-            color: #333;
-            text-decoration: none;
-            padding: 15px 20px;
-            font-weight: 500;
+        .timeline {
+            position: relative;
+            padding: 20px 0;
         }
 
-        .faq-section .btn-link:hover,
-        .faq-section .btn-link:focus {
-            text-decoration: none;
-            color: #ffba00;
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            border-left: 2px solid #ffba00;
+            margin: 10px 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 50%;
+            width: 12px;
+            height: 12px;
+            background: #ffba00;
+            border-radius: 50%;
         }
 
         .contact-info,
@@ -125,6 +164,32 @@
             background: #ffba00;
             border-radius: 50%;
         }
+
+        .faq-section .card {
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+        .faq-section .card-header {
+            background: #f8f9fa;
+            padding: 0;
+        }
+
+        .faq-section .btn-link {
+            width: 100%;
+            text-align: left;
+            color: #333;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: 500;
+        }
+
+        .faq-section .btn-link:hover,
+        .faq-section .btn-link:focus {
+            text-decoration: none;
+            color: #ffba00;
+        }
     </style>
 </head>
 <body>
@@ -141,158 +206,261 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
-                            <li class="nav-item"><a class="nav-link" href="mission-vision.html">MİSYON-VİZYON</a></li>
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                    aria-expanded="false">ÜRÜNLERİMİZ</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="shoes.html">Ayakkabılar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="sportswear.html">Spor Giyim</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item submenu dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                    aria-expanded="false">BİRİMLERİMİZ</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="sales.html">SATIŞ BİRİMİ</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="support.html">MÜŞTERİ HİZMETLERİ</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="technical.html">TEKNİK DESTEK</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">İLETİŞİM</a></li>
-                            <li class="nav-item"><a class="nav-link" href="login-register.html">Giriş/Kayıt</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="nav-item"><a href="cart.html" class="cart"><span class="ti-bag"></span></a></li>
-                            <li class="nav-item">
-                                <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-                            </li>
-                        </ul>
+                                        <!-- Collect the nav links, forms, and other content for toggling -->
+                                        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                                            <ul class="nav navbar-nav menu_nav ml-auto">
+                                                <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="mission-vision.html">MİSYON-VİZYON</a></li>
+                                                <li class="nav-item submenu dropdown">
+                                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                                        aria-expanded="false">ÜRÜNLERİMİZ</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="nav-item"><a class="nav-link" href="shoes.html">Ayakkabılar</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="sportswear.html">Spor Giyim</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="nav-item submenu dropdown active">
+                                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                                        aria-expanded="false">BİRİMLERİMİZ</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="nav-item"><a class="nav-link" href="sales.html">SATIŞ BİRİMİ</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="support.html">MÜŞTERİ HİZMETLERİ</a></li>
+                                                        <li class="nav-item"><a class="nav-link" href="technical.html">TEKNİK DESTEK</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="nav-item"><a class="nav-link" href="contact.html">İLETİŞİM</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="login-register.html">Giriş/Kayıt</a></li>
+                                            </ul>
+                                            <ul class="nav navbar-nav navbar-right">
+                                                <li class="nav-item"><a href="cart.html" class="cart"><span class="ti-bag"></span></a></li>
+                                                <li class="nav-item">
+                                                    <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="search_input" id="search_input_box">
+                                <div class="container">
+                                    <form class="d-flex justify-content-between">
+                                        <input type="text" class="form-control" id="search_input" placeholder="Arama yapın...">
+                                        <button type="submit" class="btn"></button>
+                                        <span class="lnr lnr-cross" id="close_search" title="Aramayı Kapat"></span>
+                                    </form>
+                                </div>
+                            </div>
+                        </header>
+                        <!-- End Header Area -->
+                    
+                        <!-- Banner Area -->
+                        <section class="banner-area organic-breadcrumb">
+                            <div class="container">
+                                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                                    <div class="col-first">
+                                        <h1>Müşteri Hizmetleri</h1>
+                                        <nav class="d-flex align-items-center">
+                                            <a href="index.html">Anasayfa<span class="lnr lnr-arrow-right"></span></a>
+                                            <a href="support.html">Müşteri Hizmetleri</a>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    
+                        <!-- Ana İçerik -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h2>Müşteri Hizmetleri Birimimiz</h2>
+                                    <p class="lead">7/24 kesintisiz müşteri desteği sağlayan ekibimiz, tüm sorularınızı yanıtlamak için hazır.</p>
+                    
+                                    <!-- Hizmetlerimiz -->
+                                    <div class="services-section mt-5">
+                                        <h3>Hizmetlerimiz</h3>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="service-card" data-toggle="modal" data-target="#callCenterModal">
+                                                    <i class="fa fa-headphones fa-3x"></i>
+                                                    <h4>Çağrı Merkezi</h4>
+                                                    <p>7/24 telefon desteği ile yanınızdayız.</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="service-card" data-toggle="modal" data-target="#liveSupportModal">
+                                                    <i class="fa fa-comments fa-3x"></i>
+                                                    <h4>Canlı Destek</h4>
+                                                    <p>Online alışverişlerinizde anlık destek.</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="service-card" data-toggle="modal" data-target="#returnModal">
+                                                    <i class="fa fa-exchange fa-3x"></i>
+                                                    <h4>İade İşlemleri</h4>
+                                                    <p>Kolay ve hızlı iade süreci.</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="service-card" data-toggle="modal" data-target="#emailModal">
+                                                    <i class="fa fa-envelope fa-3x"></i>
+                                                    <h4>E-posta Desteği</h4>
+                                                    <p>Detaylı bilgi ve destek talepleriniz için.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                    <!-- Modal'lar -->
+                <!-- Çağrı Merkezi Modal -->
+                <div class="modal fade" id="callCenterModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"><i class="fa fa-headphones"></i> Çağrı Merkezi Hizmetlerimiz</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6 class="text-primary">Size Nasıl Yardımcı Olabiliriz?</h6>
+                                <div class="service-feature">
+                                    <h6><i class="fa fa-check-circle"></i> Sipariş İşlemleri</h6>
+                                    <p>Siparişlerinizin durumunu öğrenebilir, değişiklik yapabilirsiniz.</p>
+                                </div>
+                                <div class="service-feature">
+                                    <h6><i class="fa fa-check-circle"></i> Ürün Danışmanlığı</h6>
+                                    <p>Ürünlerimiz hakkında detaylı bilgi alabilirsiniz.</p>
+                                </div>
+                                <div class="service-feature">
+                                    <h6><i class="fa fa-check-circle"></i> Teknik Destek</h6>
+                                    <p>Online alışveriş sürecinde yaşadığınız sorunları çözüyoruz.</p>
+                                </div>
+                                <div class="alert alert-info mt-3">
+                                    <strong>Çağrı Merkezi Numaramız:</strong> 0850 123 45 67<br>
+                                    <strong>Çalışma Saatleri:</strong> 7/24 kesintisiz hizmet
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </nav>
-        </div>
-        <div class="search_input" id="search_input_box">
-            <div class="container">
-                <form class="d-flex justify-content-between">
-                    <input type="text" class="form-control" id="search_input" placeholder="Arama yapın...">
-                    <button type="submit" class="btn"></button>
-                    <span class="lnr lnr-cross" id="close_search" title="Aramayı Kapat"></span>
+
+                <!-- Canlı Destek Modal -->
+                <div class="modal fade" id="liveSupportModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"><i class="fa fa-comments"></i> Canlı Destek</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="chat-preview p-3 bg-light rounded">
+                                    <p class="mb-2"><strong>Bot:</strong> Merhaba! Size nasıl yardımcı olabilirim?</p>
+                                    <p class="mb-2"><strong>Siz:</strong> Siparişimi takip etmek istiyorum.</p>
+                                    <p class="mb-0"><strong>Bot:</strong> Sipariş numaranızı paylaşır mısınız?</p>
+                                </div>
+                                <div class="mt-3">
+                                    <h6>Canlı Destek Avantajları:</h6>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fa fa-rocket text-primary"></i> Anında yanıt</li>
+                                        <li><i class="fa fa-smile-o text-primary"></i> Kişiselleştirilmiş hizmet</li>
+                                        <li><i class="fa fa-file-text-o text-primary"></i> Görsel ve dosya paylaşımı</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-primary btn-block mt-3">Canlı Desteğe Bağlan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İade İşlemleri Modal -->
+                <div class="modal fade" id="returnModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"><i class="fa fa-exchange"></i> İade İşlemleri</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6>İade Süreci</h6>
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <h6>1. İade Talebi Oluşturun</h6>
+                                        <p>Hesabınızdan veya müşteri hizmetlerini arayarak iade talebinizi oluşturun.</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <h6>2. Ürünü Paketleyin</h6>
+                                        <p>Ürünü orijinal ambalajında ve etiketi çıkarılmamış şekilde paketleyin.</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <h6>3. Kargo Gönderimi</h6>
+                                        <p>Size iletilen kargo kodu ile ücretsiz gönderin.</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <h6>4. İade Onayı ve Ödeme</h6>
+                                        <p>İade onayından sonra 3 iş günü içinde ödemeniz iade edilir.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+   <!-- E-posta Desteği Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fa fa-envelope"></i> E-posta Desteği</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Başarı mesajı (başlangıçta gizli) -->
+                <div id="successMessage" class="alert alert-success" style="display: none;">
+                    <i class="fa fa-check-circle"></i> Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
+                </div>
+                 <!-- Hata mesajı (başlangıçta gizli) -->
+                 <div id="errorMessage" class="alert alert-danger" style="display: none;">
+                    <i class="fa fa-exclamation-circle"></i> Lütfen tüm alanları doldurun! Mesaj gönderilemedi.
+                </div>
+
+                <form id="emailForm" onsubmit="return handleSubmit(event)">
+                    <div class="form-group">
+                        <label>Adınız Soyadınız</label>
+                        <input type="text" class="form-control" placeholder="Adınız Soyadınız" required>
+                    </div>
+                    <div class="form-group">
+                        <label>E-posta Adresiniz</label>
+                        <input type="email" class="form-control" placeholder="E-posta adresiniz" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Konu</label>
+                        <select class="form-control" required>
+                            <option value="">Seçiniz</option>
+                            <option>Sipariş Durumu</option>
+                            <option>Ürün Bilgisi</option>
+                            <option>İade Talebi</option>
+                            <option>Şikayet</option>
+                            <option>Öneri</option>
+                            <option>Diğer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Mesajınız</label>
+                        <textarea class="form-control" rows="4" placeholder="Mesajınızı yazın..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Gönder</button>
                 </form>
             </div>
         </div>
-    </header>
-    <!-- End Header Area -->
+    </div>
+</div>
 
-    <section class="banner-area organic-breadcrumb">
-        <div class="container">
-            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-                <div class="col-first">
-                    <h1>Müşteri Hizmetleri</h1>
-                    <nav class="d-flex align-items-center">
-                        <a href="index.html">Anasayfa<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="support.html">Müşteri Hizmetleri</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ana İçerik -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <h2>Müşteri Hizmetleri Birimimiz</h2>
-                <p class="lead">7/24 kesintisiz müşteri desteği sağlayan ekibimiz, tüm sorularınızı yanıtlamak için hazır.</p>
-
-                <!-- Hizmetlerimiz -->
-                <div class="services-section mt-5">
-                    <h3>Hizmetlerimiz</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="service-card">
-                                <i class="fa fa-headphones fa-3x"></i>
-                                <h4>Çağrı Merkezi</h4>
-                                <p>7/24 telefon desteği ile yanınızdayız.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="service-card">
-                                <i class="fa fa-comments fa-3x"></i>
-                                <h4>Canlı Destek</h4>
-                                <p>Online alışverişlerinizde anlık destek.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="service-card">
-                                <i class="fa fa-exchange fa-3x"></i>
-                                <h4>İade İşlemleri</h4>
-                                <p>Kolay ve hızlı iade süreci.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="service-card">
-                                <i class="fa fa-envelope fa-3x"></i>
-                                <h4>E-posta Desteği</h4>
-                                <p>Detaylı bilgi ve destek talepleriniz için.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SSS -->
-                <div class="faq-section mt-5">
-                    <h3>Sıkça Sorulan Sorular</h3>
-                    <div class="accordion" id="faqAccordion">
-                        <div class="card">
-                            <div class="card-header" id="faqOne">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne">
-                                        İade sürecim nasıl işliyor?
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="faqOne" data-parent="#faqAccordion">
-                                <div class="card-body">
-                                    İade sürecimiz 3 adımda tamamlanır: Ürün iade talebinizi oluşturun, ürünü orijinal ambalajında kargo ile gönderin, iade onayından sonra ödemeniz 3 iş günü içinde iade edilir.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="faqTwo">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo">
-                                        Kargo takibimi nasıl yapabilirim?
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="faqTwo" data-parent="#faqAccordion">
-                                <div class="card-body">
-                                    Siparişiniz kargoya verildikten sonra size SMS ve e-posta ile takip numarası iletilecektir. Bu numara ile kargo firmasının web sitesinden takip yapabilirsiniz.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="faqThree">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree">
-                                        Ödeme seçenekleri nelerdir?
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="faqThree" data-parent="#faqAccordion">
-                                <div class="card-body">
-                                    Kredi kartı, banka kartı, havale/EFT ve kapıda ödeme seçeneklerimiz mevcuttur. Kredi kartına 12 aya varan taksit imkanı sunuyoruz.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="col-md-4">
@@ -333,12 +501,29 @@
                             <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
                         </div>
                     </div>
+                    <div class="stat-item mb-3">
+                        <h5>İlk Aramada Çözüm</h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hızlı Erişim Linkleri -->
+                <div class="quick-links mt-4 p-4 rounded bg-light">
+                    <h4>Hızlı Erişim</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#"><i class="fa fa-file-text-o"></i> Sık Sorulan Sorular</a></li>
+                        <li><a href="#"><i class="fa fa-truck"></i> Kargo Takip</a></li>
+                        <li><a href="#"><i class="fa fa-exchange"></i> İade Koşulları</a></li>
+                        <li><a href="#"><i class="fa fa-shield"></i> Gizlilik Politikası</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer Alanı Başlangıç -->
+    <!-- Footer Area -->
     <footer class="footer-area section_gap">
         <div class="container">
             <div class="row">
@@ -349,12 +534,6 @@
                             2010 yılından bu yana spor ayakkabı sektöründe hizmet veren firmamız, 
                             müşteri memnuniyetini esas alarak kaliteli ürün ve hizmet sunmaktadır.
                         </p>
-                        <div class="footer-address mt-4">
-                            <p><i class="fa fa-map-marker"></i> Bağdat Caddesi No:123</p>
-                            <p>Kadıköy / İstanbul</p>
-                            <p><i class="fa fa-phone"></i> +90 (216) 123 45 67</p>
-                            <p><i class="fa fa-envelope"></i> info@karmastore.com</p>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -362,12 +541,11 @@
                         <h6>Bültenimize Abone Olun</h6>
                         <p>En güncel kampanya ve indirimlerden haberdar olun</p>
                         <div id="mc_embed_signup">
-                            <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+                            <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                method="get" class="form-inline">
                                 <div class="d-flex flex-row">
                                     <input class="form-control" name="EMAIL" placeholder="E-posta Adresiniz" required="" type="email">
-                                    <button class="click-btn btn btn-default">
-                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                    </button>
+                                    <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
                                 </div>
                                 <div class="info"></div>
                             </form>
@@ -378,41 +556,38 @@
                     <div class="single-footer-widget mail-chimp">
                         <h6>Instagram'da Bizi Takip Edin</h6>
                         <ul class="instafeed d-flex flex-wrap">
-                            <li><img src="img/product/p1.jpg" alt="Nike Air Max"></li>
-                            <li><img src="img/product/p2.jpg" alt="Adidas Ultraboost"></li>
-                            <li><img src="img/product/p3.jpg" alt="Puma RS-X"></li>
-                            <li><img src="img/product/p4.jpg" alt="New Balance 990"></li>
-                            <li><img src="img/product/p5.jpg" alt="Nike Jordan"></li>
-                            <li><img src="img/product/p6.jpg" alt="Adidas NMD"></li>
-                            <li><img src="img/product/p7.jpg" alt="Nike Dunk"></li>
-                            <li><img src="img/product/p8.jpg" alt="Puma Suede"></li>
+                            <li><img src="img/instagram/i1.jpg" alt=""></li>
+                            <li><img src="img/instagram/i2.jpg" alt=""></li>
+                            <li><img src="img/instagram/i3.jpg" alt=""></li>
+                            <li><img src="img/instagram/i4.jpg" alt=""></li>
+                            <li><img src="img/instagram/i5.jpg" alt=""></li>
+                            <li><img src="img/instagram/i6.jpg" alt=""></li>
+                            <li><img src="img/instagram/i7.jpg" alt=""></li>
+                            <li><img src="img/instagram/i8.jpg" alt=""></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
-                        <h6>Sosyal Medya</h6>
-                        <p>Bizi takip edin</p>
+                        <h6>Bizi Takip Edin</h6>
+                        <p>Sosyal medya hesaplarımız</p>
                         <div class="footer-social d-flex align-items-center">
-                            <a href="https://facebook.com/karmastore" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="https://twitter.com/karmastore" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="https://instagram.com/karmastore" target="_blank"><i class="fa fa-instagram"></i></a>
-                            <a href="https://youtube.com/karmastore" target="_blank"><i class="fa fa-youtube"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
                 <p class="footer-text m-0">
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
-                    Tüm hakları saklıdır | Bu site 
-                    <a href="https://karmastore.com" target="_blank">Karma Store</a> 
-                    tarafından hazırlanmıştır
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tüm hakları saklıdır | 
+                    <a href="https://karmastore.com" target="_blank">Karma Store</a>
                 </p>
             </div>
         </div>
     </footer>
-    <!-- Footer Alanı Bitiş -->
 
     <!-- JavaScript Bağlantıları -->
     <script src="js/vendor/jquery-2.2.4.min.js"></script>
@@ -425,5 +600,49 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+        function handleSubmit(event) {
+    event.preventDefault();
+    
+    // Form elementlerini al
+    const form = document.getElementById('emailForm');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    
+    // Başlangıçta mesajları gizle
+    successMessage.style.display = 'none';
+    errorMessage.style.display = 'none';
+    
+    // Form verilerinin doğruluğunu kontrol et
+    if (form.checkValidity()) {
+        // Formu gizle
+        form.style.display = 'none';
+        
+        // Başarı mesajını göster
+        successMessage.style.display = 'block';
+        
+        // 3 saniye sonra modalı kapat
+        setTimeout(() => {
+            $('#emailModal').modal('hide');
+            // Modal kapandıktan sonra formu sıfırla
+            form.reset();
+            form.style.display = 'block';
+            successMessage.style.display = 'none';
+        }, 3000);
+    } else {
+        // Hata mesajını göster
+        errorMessage.style.display = 'block';
+        
+        // 3 saniye sonra hata mesajını gizle
+        setTimeout(() => {
+            errorMessage.style.display = 'none';
+        }, 3000);
+    }
+    
+    return false;
+}
+</script>
+
 </body>
 </html>

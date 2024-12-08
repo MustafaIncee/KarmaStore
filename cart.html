@@ -30,6 +30,13 @@
     <link rel="stylesheet" href="css/main.css">
 
     <style>
+
+.coupon-message {
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
        .instafeed {
     display: flex;
     flex-wrap: wrap;
@@ -279,8 +286,8 @@
                                 </td>
                                 <td>
                                     <div class="cupon_text d-flex align-items-center">
-                                        <input type="text" placeholder="Kupon Kodu">
-                                        <a class="primary-btn" href="#">Uygula</a>
+                                        <input type="text" id="couponInput" placeholder="Kupon Kodu">
+                                        <a class="primary-btn" href="#" onclick="applyCoupon(); return false;">Uygula</a>
                                     </div>
                                 </td>
                             </tr>
@@ -516,6 +523,60 @@
         document.addEventListener('DOMContentLoaded', function() {
             calculateSubtotal();
         });
+
+        function applyCoupon() {
+    const couponCode = document.getElementById('couponInput').value.trim().toLowerCase();
+    const validCoupon = "webtasarim";
+    
+    if (couponCode === validCoupon) {
+        // Mevcut ara toplamı al
+        const subtotalElements = document.querySelectorAll('tbody tr td h5');
+        let currentSubtotal = 0;
+        
+        subtotalElements.forEach(element => {
+            if (element.innerText.includes('₺')) {
+                const parentRow = element.closest('tr');
+                const firstCell = parentRow.querySelector('td:first-child');
+                if (firstCell && firstCell.textContent.trim() === '') {
+                    currentSubtotal = parseInt(element.innerText.replace('₺', ''));
+                    // %20 indirim uygula
+                    const discountedTotal = currentSubtotal * 0.8;
+                    element.innerText = '₺' + Math.round(discountedTotal);
+                    
+                    // Başarılı mesajı göster
+                    showCouponMessage('Kupon kodu başarıyla uygulandı! %20 indirim kazandınız.', 'success');
+                }
+            }
+        });
+    } else {
+        // Hata mesajı göster
+        showCouponMessage('Geçersiz kupon kodu!', 'error');
+    }
+}
+
+// Kupon mesajını göster
+function showCouponMessage(message, type) {
+    // Varsa eski mesajı kaldır
+    const existingMessage = document.querySelector('.coupon-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    // Yeni mesaj elementi oluştur
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `coupon-message alert alert-${type === 'success' ? 'success' : 'danger'}`;
+    messageDiv.style.marginTop = '10px';
+    messageDiv.textContent = message;
+    
+    // Mesajı kupon input alanının altına ekle
+    const couponDiv = document.querySelector('.cupon_text');
+    couponDiv.parentNode.insertBefore(messageDiv, couponDiv.nextSibling);
+    
+    // 3 saniye sonra mesajı kaldır
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 3000);
+}
     </script>
 </body>
 

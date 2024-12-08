@@ -139,10 +139,25 @@
         select.form-control {
             height: 40px !important;
         }
+
+        /* Başarılı mesaj stili */
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        /* Form validasyon stili */
+        .is-invalid {
+            border-color: #dc3545 !important;
+        }
     </style>
 </head>
 <body>
-    <!-- Start Header Area -->
+    <!-- Header Area -->
     <header class="header_area sticky-header">
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light main_box">
@@ -199,8 +214,8 @@
             </div>
         </div>
     </header>
-    <!-- End Header Area -->
 
+    <!-- Banner Area -->
     <section class="banner-area organic-breadcrumb">
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
@@ -214,167 +229,277 @@
             </div>
         </div>
     </section>
-
-    <!-- Ana İçerik -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <h2>Bakım ve Onarım Hizmetlerimiz</h2>
-                <p class="lead">Uzman ekibimiz, ayakkabılarınızın bakımı ve onarımı için profesyonel çözümler sunar.</p>
-
-                <!-- Bakım Hizmetleri -->
-                <div class="row mt-5">
-                    <div class="col-md-6">
-                        <div class="tech-support-card">
-                            <i class="fa fa-paint-brush fa-3x"></i>
-                            <h4>Genel Bakım</h4>
-                            <p>Temizleme, cilalama ve koruyucu bakım uygulamaları</p>
-                            <ul class="list-unstyled mt-3">
-                                <li><i class="fa fa-check text-success"></i> Derin temizlik</li>
-                                <li><i class="fa fa-check text-success"></i> Cilalama işlemi</li>
-                                <li><i class="fa fa-check text-success"></i> Su geçirmezlik</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-primary mt-3">Detaylı Bilgi</a>
+        <!-- Ana İçerik -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>Bakım ve Onarım Hizmetlerimiz</h2>
+                    <p class="lead">Uzman ekibimiz, ayakkabılarınızın bakımı ve onarımı için profesyonel çözümler sunar.</p>
+    
+                    <!-- Bakım Hizmetleri -->
+                    <div class="row mt-5">
+                        <div class="col-md-6">
+                            <div class="tech-support-card">
+                                <i class="fa fa-paint-brush fa-3x"></i>
+                                <h4>Genel Bakım</h4>
+                                <p>Temizleme, cilalama ve koruyucu bakım uygulamaları</p>
+                                <ul class="list-unstyled mt-3">
+                                    <li><i class="fa fa-check text-success"></i> Derin temizlik</li>
+                                    <li><i class="fa fa-check text-success"></i> Cilalama işlemi</li>
+                                    <li><i class="fa fa-check text-success"></i> Su geçirmezlik</li>
+                                </ul>
+                                <a href="#" class="btn btn-outline-primary mt-3" data-toggle="modal" data-target="#genelBakimModal">Detaylı Bilgi</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tech-support-card">
+                                <i class="fa fa-wrench fa-3x"></i>
+                                <h4>Onarım</h4>
+                                <p>Profesyonel tamir ve ayakkabı yenileme hizmetleri</p>
+                                <ul class="list-unstyled mt-3">
+                                    <li><i class="fa fa-check text-success"></i> Taban değişimi</li>
+                                    <li><i class="fa fa-check text-success"></i> Dikiş onarımı</li>
+                                    <li><i class="fa fa-check text-success"></i> Topuk yenileme</li>
+                                </ul>
+                                <a href="#" class="btn btn-outline-primary mt-3" data-toggle="modal" data-target="#onarimModal">Detaylı Bilgi</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tech-support-card">
+                                <i class="fa fa-tint fa-3x"></i>
+                                <h4>Boya ve Renklendirme</h4>
+                                <p>Profesyonel boyama ve renk yenileme</p>
+                                <ul class="list-unstyled mt-3">
+                                    <li><i class="fa fa-check text-success"></i> Renk değişimi</li>
+                                    <li><i class="fa fa-check text-success"></i> Renk tazeleme</li>
+                                    <li><i class="fa fa-check text-success"></i> Özel efektler</li>
+                                </ul>
+                                <a href="#" class="btn btn-outline-primary mt-3" data-toggle="modal" data-target="#boyaModal">Detaylı Bilgi</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tech-support-card">
+                                <i class="fa fa-cog fa-3x"></i>
+                                <h4>Özel İşlemler</h4>
+                                <p>Kişiye özel çözümler</p>
+                                <ul class="list-unstyled mt-3">
+                                    <li><i class="fa fa-check text-success"></i> Kalıp genişletme</li>
+                                    <li><i class="fa fa-check text-success"></i> Özel tabanlık</li>
+                                    <li><i class="fa fa-check text-success"></i> Form düzeltme</li>
+                                </ul>
+                                <a href="#" class="btn btn-outline-primary mt-3" data-toggle="modal" data-target="#ozelModal">Detaylı Bilgi</a>                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="tech-support-card">
-                            <i class="fa fa-wrench fa-3x"></i>
-                            <h4>Onarım</h4>
-                            <p>Profesyonel tamir ve ayakkabı yenileme hizmetleri</p>
-                            <ul class="list-unstyled mt-3">
-                                <li><i class="fa fa-check text-success"></i> Taban değişimi</li>
-                                <li><i class="fa fa-check text-success"></i> Dikiş onarımı</li>
-                                <li><i class="fa fa-check text-success"></i> Topuk yenileme</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-primary mt-3">Detaylı Bilgi</a>
+    
+                    <!-- Bakım Süreci -->
+                    <div class="support-process mt-5">
+                        <h3>Bakım ve Onarım Süreci</h3>
+                        <div class="support-steps">
+                            <div class="step-number">1</div>
+                            <h4>Ön İnceleme ve Tespit</h4>
+                            <p>Ayakkabınız uzman ekibimiz tarafından detaylı olarak incelenir ve ihtiyaç duyulan işlemler belirlenir.</p>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="tech-support-card">
-                            <i class="fa fa-tint fa-3x"></i>
-                            <h4>Boya ve Renklendirme</h4>
-                            <p>Profesyonel boyama ve renk yenileme</p>
-                            <ul class="list-unstyled mt-3">
-                                <li><i class="fa fa-check text-success"></i> Renk değişimi</li>
-                                <li><i class="fa fa-check text-success"></i> Renk tazeleme</li>
-                                <li><i class="fa fa-check text-success"></i> Özel efektler</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-primary mt-3">Detaylı Bilgi</a>
+                        <div class="support-steps">
+                            <div class="step-number">2</div>
+                            <h4>Fiyat Teklifi</h4>
+                            <p>Yapılacak işlemler için detaylı fiyat teklifi hazırlanır ve onayınıza sunulur.</p>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="tech-support-card">
-                            <i class="fa fa-cog fa-3x"></i>
-                            <h4>Özel İşlemler</h4>
-                            <p>Kişiye özel çözümler</p>
-                            <ul class="list-unstyled mt-3">
-                                <li><i class="fa fa-check text-success"></i> Kalıp genişletme</li>
-                                <li><i class="fa fa-check text-success"></i> Özel tabanlık</li>
-                                <li><i class="fa fa-check text-success"></i> Form düzeltme</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-primary mt-3">Detaylı Bilgi</a>
+                        <div class="support-steps">
+                            <div class="step-number">3</div>
+                            <h4>Bakım ve Onarım</h4>
+                            <p>Onayınız sonrası uzman ekibimiz gerekli bakım ve onarım işlemlerini titizlikle gerçekleştirir.</p>
+                        </div>
+                        <div class="support-steps">
+                            <div class="step-number">4</div>
+                            <h4>Kalite Kontrol ve Teslim</h4>
+                            <p>Son kontroller yapılır ve ayakkabınız yenilenmiş haliyle size teslim edilir.</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Bakım Süreci -->
-                <div class="support-process mt-5">
-                    <h3>Bakım ve Onarım Süreci</h3>
-                    <div class="support-steps">
-                        <div class="step-number">1</div>
-                        <h4>Ön İnceleme ve Tespit</h4>
-                        <p>Ayakkabınız uzman ekibimiz tarafından detaylı olarak incelenir ve ihtiyaç duyulan işlemler belirlenir.</p>
+                <div class="col-md-4">
+                    <!-- Teknik Destek Formu -->
+                    <div class="support-form p-4 rounded">
+                        <h4>Bakım/Onarım Talebi</h4>
+                        <div id="successMessage" class="alert alert-success" style="display: none;">
+                            Bakım/onarım talebiniz başarıyla alınmıştır. En kısa sürede sizinle iletişime geçeceğiz.
+                        </div>
+                        <form id="supportForm" onsubmit="return validateForm(event)">
+                            <div class="form-group">
+                                <label>Adınız Soyadınız</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>E-posta</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Telefon</label>
+                                <input type="tel" class="form-control" pattern="[0-9]+" maxlength="11" 
+                                       oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                                       placeholder="05xxxxxxxxx" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Ayakkabı Markası ve Modeli</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Hizmet Türü</label>
+                                <select class="form-control" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="genel_bakim">Genel Bakım</option>
+                                    <option value="onarim">Onarım</option>
+                                    <option value="boya">Boya ve Renklendirme</option>
+                                    <option value="ozel">Özel İşlemler</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Sorun/İstek Açıklaması</label>
+                                <textarea class="form-control" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Talep Oluştur</button>
+                        </form>
                     </div>
-                    <div class="support-steps">
-                        <div class="step-number">2</div>
-                        <h4>Fiyat Teklifi</h4>
-                        <p>Yapılacak işlemler için detaylı fiyat teklifi hazırlanır ve onayınıza sunulur.</p>
+    
+                    <!-- İletişim Bilgileri -->
+                    <div class="contact-info mt-4 p-4 rounded">
+                        <h4>Bakım Merkezi İletişim</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="fa fa-phone"></i>
+                                <strong>Müşteri Hattı:</strong><br>
+                                0850 123 45 67
+                            </li>
+                            <li class="mb-3">
+                                <i class="fa fa-envelope"></i>
+                                <strong>E-posta:</strong><br>
+                                bakim@karmastore.com
+                            </li>
+                            <li class="mb-3">
+                                <i class="fa fa-clock-o"></i>
+                                <strong>Çalışma Saatleri:</strong><br>
+                                Hafta içi: 09:00 - 18:00<br>
+                                Cumartesi: 09:00 - 14:00
+                            </li>
+                            <li class="mb-3">
+                                <i class="fa fa-info-circle"></i>
+                                <strong>Önemli Not:</strong><br>
+                                Bakım/onarım süresi ortalama 3-5 iş günüdür.
+                            </li>
+                        </ul>
                     </div>
-                    <div class="support-steps">
-                        <div class="step-number">3</div>
-                        <h4>Bakım ve Onarım</h4>
-                        <p>Onayınız sonrası uzman ekibimiz gerekli bakım ve onarım işlemlerini titizlikle gerçekleştirir.</p>
-                    </div>
-                    <div class="support-steps">
-                        <div class="step-number">4</div>
-                        <h4>Kalite Kontrol ve Teslim</h4>
-                        <p>Son kontroller yapılır ve ayakkabınız yenilenmiş haliyle size teslim edilir.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <!-- Teknik Destek Formu -->
-                <div class="support-form p-4 rounded">
-                    <h4>Bakım/Onarım Talebi</h4>
-                    <form>
-                        <div class="form-group">
-                            <label>Adınız Soyadınız</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>E-posta</label>
-                            <input type="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Telefon</label>
-                            <input type="tel" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Ayakkabı Markası ve Modeli</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Hizmet Türü</label>
-                            <select class="form-control" required>
-                                <option value="">Seçiniz</option>
-                                <option value="genel_bakim">Genel Bakım</option>
-                                <option value="onarim">Onarım</option>
-                                <option value="boya">Boya ve Renklendirme</option>
-                                <option value="ozel">Özel İşlemler</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Sorun/İstek Açıklaması</label>
-                            <textarea class="form-control" rows="4" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Talep Oluştur</button>
-                    </form>
-                </div>
-
-                <!-- İletişim Bilgileri -->
-                <div class="contact-info mt-4 p-4 rounded">
-                    <h4>Bakım Merkezi İletişim</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-3">
-                            <i class="fa fa-phone"></i>
-                            <strong>Müşteri Hattı:</strong><br>
-                            0850 123 45 67
-                        </li>
-                        <li class="mb-3">
-                            <i class="fa fa-envelope"></i>
-                            <strong>E-posta:</strong><br>
-                            bakim@karmastore.com
-                        </li>
-                        <li class="mb-3">
-                            <i class="fa fa-clock-o"></i>
-                            <strong>Çalışma Saatleri:</strong><br>
-                            Hafta içi: 09:00 - 18:00<br>
-                            Cumartesi: 09:00 - 14:00
-                        </li>
-                        <li class="mb-3">
-                            <i class="fa fa-info-circle"></i>
-                            <strong>Önemli Not:</strong><br>
-                            Bakım/onarım süresi ortalama 3-5 iş günüdür.
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Footer Alanı Başlangıç -->
+        <!-- Modalleri ekleyin (body tag'inin sonuna, footer'dan önce) -->
+<!-- Genel Bakım Modal -->
+<div class="modal fade" id="genelBakimModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Genel Bakım Hizmetlerimiz</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="img/genel-bakim.png" class="img-fluid mb-3" alt="Genel Bakım">
+                <h6>Premium Bakım Paketi</h6>
+                <p>Ayakkabınızın ömrünü uzatan profesyonel bakım hizmeti:</p>
+                <ul>
+                    <li>Nano teknoloji ile derinlemesine temizlik</li>
+                    <li>Özel formüllü koruyucu krem uygulaması</li>
+                    <li>UV koruma ve su geçirmezlik işlemi</li>
+                    <li>Antibakteriyel iç taban temizliği</li>
+                </ul>
+                <p class="text-muted">Süre: Ortalama 2-3 saat</p>
+                <p class="text-primary">Fiyat: 350₺'den başlayan fiyatlarla</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Onarım Modal -->
+<div class="modal fade" id="onarimModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Profesyonel Onarım Hizmetleri</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="img/onarim.png" class="img-fluid mb-3" alt="Onarım">
+                <h6>Yenileme ve Tamir Hizmetleri</h6>
+                <p>Uzman ekibimizle ayakkabınıza ikinci bir hayat:</p>
+                <ul>
+                    <li>İtalyan deri ile yama ve onarım</li>
+                    <li>Özel yapıştırıcılarla taban yenileme</li>
+                    <li>Endüstriyel dikiş makineleriyle sağlamlaştırma</li>
+                    <li>Topuk yenileme ve güçlendirme</li>
+                </ul>
+                <p class="text-muted">Süre: İşleme göre 1-5 gün</p>
+                <p class="text-primary">Fiyat: Yapılacak işleme göre değişiklik gösterir</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Boya Modal -->
+<div class="modal fade" id="boyaModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Boya ve Renklendirme Sanatı</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="img/boya.png" class="img-fluid mb-3" alt="Boya">
+                <h6>Profesyonel Renk Değişimi</h6>
+                <p>Ayakkabınıza yeni bir görünüm kazandırın:</p>
+                <ul>
+                    <li>200+ profesyonel renk seçeneği</li>
+                    <li>Özel efekt uygulamaları (metalik, mat, parlak)</li>
+                    <li>Kalıcı ve çatlamayan boya teknolojisi</li>
+                    <li>Desenli ve gradyan renk uygulamaları</li>
+                </ul>
+                <p class="text-muted">Süre: 2-4 gün</p>
+                <p class="text-primary">Fiyat: 400₺'den başlayan fiyatlarla</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Özel İşlemler Modal -->
+<div class="modal fade" id="ozelModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Özel İşlem ve Modifikasyonlar</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="img/ozel.png" class="img-fluid mb-3" alt="Özel İşlemler">
+                <h6>Kişiye Özel Çözümler</h6>
+                <p>Ayakkabınızı size özel hale getirin:</p>
+                <ul>
+                    <li>3D tarama ile özel tabanlık üretimi</li>
+                    <li>Hassas bölgelerde genişletme işlemi</li>
+                    <li>Özel ortopedik modifikasyonlar</li>
+                    <li>Kişiselleştirilmiş tasarım uygulamaları</li>
+                </ul>
+                <p class="text-muted">Süre: İşleme göre 1-7 gün</p>
+                <p class="text-primary">Fiyat: Özel işlem detayına göre belirlenir</p>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- Footer -->
     <footer class="footer-area section_gap">
         <div class="container">
             <div class="row">
@@ -445,7 +570,6 @@
             </div>
         </div>
     </footer>
-    <!-- Footer Alanı Bitiş -->
 
     <!-- JavaScript Bağlantıları -->
     <script src="js/vendor/jquery-2.2.4.min.js"></script>
@@ -458,5 +582,44 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Form Validasyon Script -->
+    <script>
+        function validateForm(event) {
+        event.preventDefault();
+        
+        const form = document.getElementById('supportForm');
+        const inputs = form.querySelectorAll('input, select, textarea');
+        let isValid = true;
+        
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.classList.add('is-invalid');
+            } else if (input.type === 'tel') {
+                // Telefon numarası kontrolü
+                const phoneRegex = /^[0-9]{10,11}$/;
+                if (!phoneRegex.test(input.value)) {
+                    isValid = false;
+                    input.classList.add('is-invalid');
+                    alert('Lütfen geçerli bir telefon numarası giriniz (10-11 rakam)');
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            } else {
+                input.classList.remove('is-invalid');
+            }
+        });
+        if (isValid) {
+            document.getElementById('successMessage').style.display = 'block';
+            form.reset();
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        }
+        
+        return false;
+    }
+    </script>
 </body>
 </html>
