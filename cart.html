@@ -2,24 +2,14 @@
 <html lang="tr" class="no-js">
 
 <head>
-    <!-- Mobil Uyumlu Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon-->
     <link rel="shortcut icon" href="img/fav.png">
-    <!-- Yazar Meta -->
     <meta name="author" content="CodePixar">
-    <!-- Meta Açıklama -->
     <meta name="description" content="">
-    <!-- Meta Anahtar Kelimeler -->
     <meta name="keywords" content="">
-    <!-- Meta Karakter Seti -->
     <meta charset="UTF-8">
-    <!-- Site Başlığı -->
     <title>Karma Mağaza</title>
 
-    <!--
-            CSS
-            ============================================= -->
     <link rel="stylesheet" href="css/linearicons.css">
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -31,42 +21,95 @@
 
     <style>
 
-.coupon-message {
-    font-size: 14px;
-    padding: 8px 15px;
+.shipping_box {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+.form-control {
+    height: 45px;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    margin-top: 10px;
-}
-       .instafeed {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    padding: 0 15px;
+    transition: all 0.3s ease;
 }
 
-.instafeed li {
-    width: calc(25% - 5px);  /* 4 sütun grid için */
-    height: 60px;  /* Yüksekliği azalttık */
-    overflow: hidden;
+.form-control:focus {
+    border-color: #384aeb;
+    box-shadow: none;
 }
 
-.instafeed li img {
-    width: 100%;
+textarea.form-control {
+    height: auto;
+    padding: 15px;
+}
+
+.delivery-info, .payment-info {
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 25px;
 }
 
-.instafeed li:hover img {
-    transform: scale(1.1);
+.custom-control-label {
+    font-size: 14px;
+    color: #777;
 }
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #384aeb;
+    border-color: #384aeb;
+}
+        .coupon-message {
+            font-size: 14px;
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .instafeed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .instafeed li {
+            width: calc(25% - 5px);
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .instafeed li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .instafeed li:hover img {
+            transform: scale(1.1);
+        }
 
         .media .d-flex img {
             max-width: 100px;
             height: auto;
             object-fit: contain;
+        }
+
+        .shipping_box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
         }
 
         @media (max-width: 768px) {
@@ -87,279 +130,312 @@
 </head>
 
 <body>
-
-    <!-- Başlık Alanı Başlangıcı -->
-    <header class="header_area sticky-header">
-        <div class="main_menu">
-            <nav class="navbar navbar-expand-lg navbar-light main_box">
-                <div class="container">
-                    <!-- Marka ve mobil görünüm için topla -->
-                    <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- Menü bağlantılarını, formları ve diğer içerikleri topla -->
-                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
-                            <li class="nav-item"><a class="nav-link" href="mission-vision.html">Misyon-Vizyon</a></li>
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                    aria-expanded="false">Ürünlerimiz</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="shoes.html">Ayakkabılar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="sportswear.html">Spor Giyim</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                    aria-expanded="false">Birimlerimiz</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="sales.html">Satış Birimi</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="support.html">Müşteri Hizmetleri</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="technical.html">Teknik Destek</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
-                            <li class="nav-item"><a class="nav-link" href="login-register.html">Giriş/Kayıt</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="nav-item active"><a href="cart.html" class="cart"><span class="ti-bag"></span></a></li>
-                            <li class="nav-item">
-                                <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="search_input" id="search_input_box">
+   
+ <!-- Header Başlangıç -->
+ <header class="header_area sticky-header">
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light main_box">
             <div class="container">
-                <form class="d-flex justify-content-between">
-                    <input type="text" class="form-control" id="search_input" placeholder="Arama yapın...">
-                    <button type="submit" class="btn"></button>
-                    <span class="lnr lnr-cross" id="close_search" title="Aramayı Kapat"></span>
-                </form>
-            </div>
-        </div>
-    </header>
-    <!-- Başlık Alanı Sonu -->
-
-    <!-- Banner Alanı Başlangıcı -->
-    <section class="banner-area organic-breadcrumb">
-        <div class="container">
-            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-                <div class="col-first">
-                    <h1>Alışveriş Sepeti</h1>
-                    <nav class="d-flex align-items-center">
-                        <a href="index.html">Ana Sayfa<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="category.html">Sepet</a>
-                    </nav>
+                <!-- Logo -->
+                <a class="navbar-brand logo_h" href="index.html">
+                    <img src="img/logo.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Menü -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Ana Sayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">Hakkımızda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mission-vision.html">Misyon-Vizyon</a>
+                        </li>
+                        <li class="nav-item submenu dropdown active">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" 
+                               aria-haspopup="true" aria-expanded="false">Ürünlerimiz</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="shoes.html">Ayakkabılar</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="sportswear.html">Spor Giyim</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" 
+                               aria-haspopup="true" aria-expanded="false">Birimlerimiz</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="sales.html">Satış Birimi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="support.html">Müşteri Hizmetleri</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="technical.html">Teknik Destek</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">İletişim</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login-register.html">Giriş/Kayıt</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a href="cart.html" class="cart">
+                                <span class="ti-bag"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="search">
+                                <span class="lnr lnr-magnifier" id="search"></span>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Alışveriş Sepeti</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Ana Sayfa<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="cart.html">Sepet</a>
+                </nav>
+            </div>
         </div>
-    </section>
-    <!-- Banner Alanı Sonu -->
+    </div>
+</section>
 
-    <!--================Sepet Alanı =================-->
-    <section class="cart_area">
-        <div class="container">
-            <div class="cart_inner">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col" style="min-width: 200px;">Ürün</th>
-                                <th scope="col" style="min-width: 100px;">Fiyat</th>
-                                <th scope="col" style="min-width: 120px;">Adet</th>
-                                <th scope="col" style="min-width: 100px;">Toplam</th>
-                                <th scope="col" style="min-width: 50px;">Sil</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/shoes/nike-air-max.png" alt="Ayakkabı 1">
+<!-- Cart Area -->
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ürün</th>
+                            <th scope="col">Fiyat</th>
+                            <th scope="col">Adet</th>
+                            <th scope="col">Toplam</th>
+                            <th scope="col">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="img/shoes/nike-air-max.png" alt="Ayakkabı 1">
+                                    </div>
+                                    <div class="media-body">
+                                        <p>Nike Air Max</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <h5>₺5299</h5>
+                            </td>
+                            <td>
+                                <div class="product_count">
+                                    <input type="text" name="qty" id="sst1" maxlength="12" value="1" title="Adet:"
+                                        class="input-text qty">
+                                    <button onclick="var result = document.getElementById('sst1'); var sst = result.value; if( !isNaN( sst )) result.value++; updateTotal('sst1'); return false;"
+                                        class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                                    <button onclick="var result = document.getElementById('sst1'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--; updateTotal('sst1'); return false;"
+                                        class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                                </div>
+                            </td>
+                            <td>
+                                <h5>₺5299</h5>
+                            </td>
+                            <td>
+                                <button onclick="removeItem(this)" class="btn btn-danger">Sil</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="img/shoes/adidas-ultra-boost.png" alt="Ayakkabı 2">
+                                    </div>
+                                    <div class="media-body">
+                                        <p>Adidas Ultraboost 5</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <h5>₺8169</h5>
+                            </td>
+                            <td>
+                                <div class="product_count">
+                                    <input type="text" name="qty" id="sst2" maxlength="12" value="1" title="Adet:"
+                                        class="input-text qty">
+                                    <button onclick="var result = document.getElementById('sst2'); var sst = result.value; if( !isNaN( sst )) result.value++; updateTotal('sst2'); return false;"
+                                        class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                                    <button onclick="var result = document.getElementById('sst2'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--; updateTotal('sst2'); return false;"
+                                        class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                                </div>
+                            </td>
+                            <td>
+                                <h5>₺8169</h5>
+                            </td>
+                            <td>
+                                <button onclick="removeItem(this)" class="btn btn-danger">Sil</button>
+                            </td>
+                        </tr>
+                        <tr class="bottom_button">
+                            <td>
+                                <a class="gray_btn" href="#">Sepeti Güncelle</a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="cupon_text d-flex align-items-center">
+                                    <input type="text" id="couponInput" placeholder="Kupon Kodu">
+                                    <a class="primary-btn" href="#" onclick="applyCoupon(); return false;">Uygula</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <h5>Ara Toplam</h5>
+                            </td>
+                            <td>
+                                <h5>₺13468</h5>
+                            </td>
+                        </tr>
+                        <tr class="shipping_area">
+                            <td colspan="4">
+                                <div class="shipping_box p-4" style="background: #f8f9fa; border-radius: 8px; margin: 20px 0;">
+                                    <h4 class="mb-4" style="color: #333;">Teslimat ve Ödeme Bilgileri</h4>
+                                    <form id="paymentForm">
+                                        <div class="row">
+                                            <!-- Teslimat Bilgileri -->
+                                            <div class="col-md-6 mb-4">
+                                                <div class="delivery-info p-3" style="background: white; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                                    <h5 class="mb-4" style="color: #333;">Teslimat Adresi</h5>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control mb-3" placeholder="Ad Soyad" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="tel" class="form-control mb-3" placeholder="Telefon" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <select class="form-control mb-3" required>
+                                                            <option value="">İl Seçiniz</option>
+                                                            <option value="1">İstanbul</option>
+                                                            <option value="2">Ankara</option>
+                                                            <option value="3">İzmir</option>
+                                                            <option value="4">Bursa</option>
+                                                            <option value="5">Antalya</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control mb-3" placeholder="Posta Kodu" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" placeholder="Açık Adres" rows="3" required 
+                                                            style="resize: none;"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Kart Bilgileri -->
+                                            <div class="col-md-6 mb-4">
+                                                <div class="payment-info p-3" style="background: white; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                                    <h5 class="mb-4" style="color: #333;">Ödeme Bilgileri</h5>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control mb-3" placeholder="Kart Üzerindeki İsim" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control mb-3" placeholder="Kart Numarası" 
+                                                               pattern="[0-9]{16}" maxlength="16" required>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control mb-3" placeholder="Son Kullanma (AA/YY)" 
+                                                                       pattern="[0-9]{2}/[0-9]{2}" maxlength="5" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control mb-3" placeholder="CVV" 
+                                                                       pattern="[0-9]{3}" maxlength="3" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="saveCard">
+                                                            <label class="custom-control-label" for="saveCard">Kartımı gelecek alışverişler için kaydet</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="media-body">
-                                            <p>Nike Air Max</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>₺5299</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst1" maxlength="12" value="1" title="Adet:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst1'); var sst = result.value; if( !isNaN( sst )) result.value++; updateTotal('sst1'); return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst1'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--; updateTotal('sst1'); return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>₺5299</h5>
-                                </td>
-                                <td>
-                                    <button onclick="removeItem(this)" class="btn btn-danger">Sil</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/shoes/adidas-ultra-boost.png" alt="Ayakkabı 2">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Adidas Ultraboost 5</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>₺8169</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst2" maxlength="12" value="1" title="Adet:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst2'); var sst = result.value; if( !isNaN( sst )) result.value++; updateTotal('sst2'); return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst2'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--; updateTotal('sst2'); return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>₺8169</h5>
-                                </td>
-                                <td>
-                                    <button onclick="removeItem(this)" class="btn btn-danger">Sil</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/shoes/puma-rs-x-1.png" alt="Ayakkabı 3">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Puma RS-X</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>₺4550</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst3" maxlength="12" value="1" title="Adet:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst3'); var sst = result.value; if( !isNaN( sst )) result.value++; updateTotal('sst3'); return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst3'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--; updateTotal('sst3'); return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>₺4550</h5>
-                                </td>
-                                <td>
-                                    <button onclick="removeItem(this)" class="btn btn-danger">Sil</button>
-                                </td>
-                            </tr>
-                            <tr class="bottom_button">
-                                <td>
-                                    <a class="gray_btn" href="#">Sepeti Güncelle</a>
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <div class="cupon_text d-flex align-items-center">
-                                        <input type="text" id="couponInput" placeholder="Kupon Kodu">
-                                        <a class="primary-btn" href="#" onclick="applyCoupon(); return false;">Uygula</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <h5>Ara Toplam</h5>
-                                </td>
-                                <td>
-                                    <h5>₺18018</h5>
-                                </td>
-                            </tr>
-                            <tr class="shipping_area">
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <h5>Kargo</h5>
-                                </td>
-                                <td>
-                                    <div class="shipping_box">
-                                        <ul class="list">
-                                            <li><a href="#">Ücretsiz Kargo</a></li>
-                                            <li class="active"><a href="#">Yerel Teslimat: ₺89.00</a></li>
-                                        </ul>
-                                        <select class="shipping_select">
-                                            <option value="1">Türkiye</option>
-                                        </select>
-                                        <select class="shipping_select">
-                                            <option value="1">İstanbul</option>
-                                            <option value="2">İzmir</option>
-                                            <option value="4">Ankara</option>
-                                        </select>
-                                        <input type="text" placeholder="Posta Kodu">
-                                        <a class="gray_btn" href="#">Detayları Güncelle</a>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
                             <tr class="out_button_area">
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="#">Alışverişe Devam Et</a>
-                                        <a class="primary-btn" href="#">Ödeme Yap</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            <td colspan="4">
+                                <div class="checkout_btn_inner d-flex align-items-center justify-content-end">
+                                    <a class="gray_btn" href="shoes.html">Alışverişe Devam Et</a>
+                                    <button class="primary-btn ml-2" onclick="submitPayment()">Ödeme Yap</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
-    <!--================Sepet Alanı Sonu =================-->
+    </div>
+</section>
 
-    <!-- Footer Alanı Başlangıç -->
+<!-- Ödeme başarılı modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Başarılı!</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Ödemeniz başarıyla gerçekleştirildi. Siparişiniz en kısa sürede hazırlanacaktır.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="shoes.html" class="btn btn-primary">Alışverişe Devam Et</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Alanı Başlangıç -->
 <footer class="footer-area section_gap">
     <div class="container">
         <div class="row">
@@ -383,7 +459,7 @@
                     <h6>Bültenimize Abone Olun</h6>
                     <p>En güncel kampanya ve indirimlerden haberdar olun</p>
                     <div id="mc_embed_signup">
-                        <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+                        <form target="_blank" novalidate="true" action="#" method="get" class="form-inline">
                             <div class="d-flex flex-row">
                                 <input class="form-control" name="EMAIL" placeholder="E-posta Adresiniz" required="" type="email">
                                 <button class="click-btn btn btn-default">
@@ -433,151 +509,144 @@
         </div>
     </div>
 </footer>
-<!-- Footer Alanı Bitiş -->
 
+<!-- JavaScript -->
+<script src="js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/nouislider.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
 
-    <script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/nouislider.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <!--gmaps Js-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-    <script src="js/gmaps.min.js"></script>
-    <script src="js/main.js"></script>
-    
-    <script>
-        // Ürün miktarı değiştiğinde toplam fiyatı güncelle
-        function updateTotal(inputId) {
-            const input = document.getElementById(inputId);
-            const quantity = parseInt(input.value);
-            
-            // Geçersiz veya negatif değerleri kontrol et
-            if (isNaN(quantity) || quantity < 0) {
-                input.value = 0;
-                return;
-            }
-            
-            const row = input.closest('tr');
-            const priceElement = row.querySelector('td:nth-child(2) h5');
-            const totalElement = row.querySelector('td:nth-child(4) h5');
-            
-            // Fiyatı sayısal değere çevir
-            const price = parseInt(priceElement.innerText.replace('₺', ''));
-            const total = price * quantity;
-            
-            // Toplam fiyatı güncelle
-            totalElement.innerText = '₺' + total;
-            calculateSubtotal();
-        }
-    
-        // Ara toplamı hesapla
-        function calculateSubtotal() {
-            let subtotal = 0;
-            
-            // Sadece ürün satırlarını seç
-            const productRows = document.querySelectorAll('tbody tr');
-            
-            productRows.forEach(row => {
-                // Sadece ürün satırlarını kontrol et (sil butonu varsa)
-                const deleteButton = row.querySelector('.btn-danger');
-                if (deleteButton) {
-                    const totalElement = row.querySelector('td:nth-child(4) h5');
-                    if (totalElement && totalElement.innerText) {
-                        const total = parseInt(totalElement.innerText.replace('₺', ''));
-                        if (!isNaN(total)) {
-                            subtotal += total;
-                        }
-                    }
-                }
-            });
-            
-            // Ara toplam alanını güncelle
-            const subtotalElements = document.querySelectorAll('tbody tr td h5');
-            subtotalElements.forEach(element => {
-                if (element.innerText.includes('₺')) {
-                    const parentRow = element.closest('tr');
-                    const firstCell = parentRow.querySelector('td:first-child');
-                    if (firstCell && firstCell.textContent.trim() === '') {
-                        element.innerText = '₺' + subtotal;
-                    }
-                }
-            });
-        }
-    
-        // Ürünü sepetten çıkar
-        function removeItem(button) {
-            const row = button.closest('tr');
-            // Önce satırı kaldır
-            row.remove();
-            // Sonra ara toplamı güncelle
-            setTimeout(calculateSubtotal, 0);
-        }
-    
-        // Sayfa yüklendiğinde ara toplamı hesapla
-        document.addEventListener('DOMContentLoaded', function() {
-            calculateSubtotal();
-        });
-
-        function applyCoupon() {
-    const couponCode = document.getElementById('couponInput').value.trim().toLowerCase();
-    const validCoupon = "webtasarim";
-    
-    if (couponCode === validCoupon) {
-        // Mevcut ara toplamı al
-        const subtotalElements = document.querySelectorAll('tbody tr td h5');
-        let currentSubtotal = 0;
+<script>
+    // Ürün miktarı değiştiğinde toplam fiyatı güncelle
+    function updateTotal(inputId) {
+        const input = document.getElementById(inputId);
+        const quantity = parseInt(input.value);
         
+        if (isNaN(quantity) || quantity < 0) {
+            input.value = 0;
+            return;
+        }
+        
+        const row = input.closest('tr');
+        const priceElement = row.querySelector('td:nth-child(2) h5');
+        const totalElement = row.querySelector('td:nth-child(4) h5');
+        
+        const price = parseInt(priceElement.innerText.replace('₺', ''));
+        const total = price * quantity;
+        
+        totalElement.innerText = '₺' + total;
+        calculateSubtotal();
+    }
+
+    // Ara toplamı hesapla
+    function calculateSubtotal() {
+        let subtotal = 0;
+        const productRows = document.querySelectorAll('tbody tr');
+        
+        productRows.forEach(row => {
+            const deleteButton = row.querySelector('.btn-danger');
+            if (deleteButton) {
+                const totalElement = row.querySelector('td:nth-child(4) h5');
+                if (totalElement && totalElement.innerText) {
+                    const total = parseInt(totalElement.innerText.replace('₺', ''));
+                    if (!isNaN(total)) {
+                        subtotal += total;
+                    }
+                }
+            }
+        });
+        
+        const subtotalElements = document.querySelectorAll('tbody tr td h5');
         subtotalElements.forEach(element => {
             if (element.innerText.includes('₺')) {
                 const parentRow = element.closest('tr');
                 const firstCell = parentRow.querySelector('td:first-child');
                 if (firstCell && firstCell.textContent.trim() === '') {
-                    currentSubtotal = parseInt(element.innerText.replace('₺', ''));
-                    // %20 indirim uygula
-                    const discountedTotal = currentSubtotal * 0.8;
-                    element.innerText = '₺' + Math.round(discountedTotal);
-                    
-                    // Başarılı mesajı göster
-                    showCouponMessage('Kupon kodu başarıyla uygulandı! %20 indirim kazandınız.', 'success');
+                    element.innerText = '₺' + subtotal;
                 }
             }
         });
-    } else {
-        // Hata mesajı göster
-        showCouponMessage('Geçersiz kupon kodu!', 'error');
     }
-}
 
-// Kupon mesajını göster
-function showCouponMessage(message, type) {
-    // Varsa eski mesajı kaldır
-    const existingMessage = document.querySelector('.coupon-message');
-    if (existingMessage) {
-        existingMessage.remove();
+    // Ürünü sepetten çıkar
+    function removeItem(button) {
+        const row = button.closest('tr');
+        row.remove();
+        setTimeout(calculateSubtotal, 0);
     }
-    
-    // Yeni mesaj elementi oluştur
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `coupon-message alert alert-${type === 'success' ? 'success' : 'danger'}`;
-    messageDiv.style.marginTop = '10px';
-    messageDiv.textContent = message;
-    
-    // Mesajı kupon input alanının altına ekle
-    const couponDiv = document.querySelector('.cupon_text');
-    couponDiv.parentNode.insertBefore(messageDiv, couponDiv.nextSibling);
-    
-    // 3 saniye sonra mesajı kaldır
-    setTimeout(() => {
-        messageDiv.remove();
-    }, 3000);
-}
-    </script>
+
+    // Kupon kodunu uygula
+    function applyCoupon() {
+        const couponCode = document.getElementById('couponInput').value.trim().toLowerCase();
+        const validCoupon = "webtasarim";
+        
+        if (couponCode === validCoupon) {
+            const subtotalElements = document.querySelectorAll('tbody tr td h5');
+            let currentSubtotal = 0;
+            
+            subtotalElements.forEach(element => {
+                if (element.innerText.includes('₺')) {
+                    const parentRow = element.closest('tr');
+                    const firstCell = parentRow.querySelector('td:first-child');
+                    if (firstCell && firstCell.textContent.trim() === '') {
+                        currentSubtotal = parseInt(element.innerText.replace('₺', ''));
+                        const discountedTotal = currentSubtotal * 0.8;
+                        element.innerText = '₺' + Math.round(discountedTotal);
+                        showCouponMessage('Kupon kodu başarıyla uygulandı! %20 indirim kazandınız.', 'success');
+                    }
+                }
+            });
+        } else {
+            showCouponMessage('Geçersiz kupon kodu!', 'error');
+        }
+    }
+
+    // Kupon mesajını göster
+    function showCouponMessage(message, type) {
+        const existingMessage = document.querySelector('.coupon-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+        
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `coupon-message alert alert-${type === 'success' ? 'success' : 'danger'}`;
+        messageDiv.style.marginTop = '10px';
+        messageDiv.textContent = message;
+        
+        const couponDiv = document.querySelector('.cupon_text');
+        couponDiv.parentNode.insertBefore(messageDiv, couponDiv.nextSibling);
+        
+        setTimeout(() => {
+            messageDiv.remove();
+        }, 3000);
+    }
+
+    // Ödeme işlemini gerçekleştir
+    function submitPayment() {
+        const form = document.getElementById('paymentForm');
+        
+        if (form.checkValidity()) {
+            $('#successModal').modal('show');
+            
+            setTimeout(() => {
+                window.location.href = 'shoes.html';
+            }, 3000);
+        } else {
+            form.reportValidity();
+        }
+    }
+
+    // Sayfa yüklendiğinde ara toplamı hesapla
+    document.addEventListener('DOMContentLoaded', function() {
+        calculateSubtotal();
+    });
+</script>
+
 </body>
-
 </html>
